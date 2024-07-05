@@ -1,0 +1,24 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+.ios, .md {
+    --ion-tab-bar-background: #FFFFFF;
+    --ion-background-color: #F3F0F0;
+}
+
+ion-tab-button {
+    --color-selected: #49209B;
+    --color: #000000;
+}
+
+ion-title {
+    --color: #49209B;
+}
+
+ion-button {
+    --background: #49209B;
+    --border-radius: 2em;
+}
+
+
+

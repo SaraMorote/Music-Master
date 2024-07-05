@@ -1,0 +1,7 @@
+{
+  "name": "Music Master",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
