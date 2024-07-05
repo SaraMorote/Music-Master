@@ -3,5 +3,10 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "server": {
+    "port": 8100,
+    "open": true,
+    "labPort": 8200
+  }
 }
