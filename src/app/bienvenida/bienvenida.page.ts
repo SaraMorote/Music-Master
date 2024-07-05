@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InicioPage } from '../inicio/inicio.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bienvenida',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BienvenidaPage implements OnInit {
 
-  constructor() { }
+  component = InicioPage;
+
+  constructor(private router: Router) { 
+
+  }
 
   ngOnInit() {
   }
 
+  mostrarPagina(){
+    this.router.navigate(['inicio']);
+  }
 }
