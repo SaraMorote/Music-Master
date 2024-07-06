@@ -1,6 +1,15 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
 
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/tipografiaMontserrat.woff2') format('woff2');
+  }
+  *{
+    font-family: 'Montserrat', sans-serif;
+  }
+
+
 .ios, .md {
     --ion-tab-bar-background: #FFFFFF;
     --ion-background-color: #F3F0F0;
@@ -20,5 +29,10 @@ ion-button {
     --border-radius: 2em;
 }
 
+.centrarBoton {
+    text-align: center;
+    margin-bottom: 45px;
+    margin-top: 45px;
+}
 
 
