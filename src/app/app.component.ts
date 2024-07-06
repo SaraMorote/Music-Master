@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { TabsPage } from './tabs/tabs.page';
 
 @Component({
   selector: 'app-root',

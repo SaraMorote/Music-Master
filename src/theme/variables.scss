@@ -27,6 +27,8 @@ ion-title {
 ion-button {
     --background: #49209B;
     --border-radius: 2em;
+    text-transform: none;
+    max-width: 200px;
 }
 
 .centrarBoton {
@@ -35,4 +37,7 @@ ion-button {
     margin-top: 45px;
 }
 
-
+.posicionTitulos {
+    margin-left: 20px;
+    margin-top: 45px;
+}

@@ -1,0 +1,39 @@
+.allTheLevels {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+  .custom-section {
+    display: flex;
+    align-items: center; /* Alinea los elementos verticalmente */
+    margin-bottom: 10px;
+  }
+  
+  .left-column {
+    flex: 0 0 auto; /* No se estira, tamaño basado en contenido */
+    margin-right: 10px; /* Espacio entre las columnas */
+  }
+  
+  .right-column {
+    display: flex;
+    flex-direction: column; /* Columna para apilar elementos */
+    justify-content: flex-start; /* Alinea al inicio verticalmente */
+    flex-grow: 1; /* Ocupa el espacio restante */
+  }
+  
+  .normal-button {
+    align-self: flex-end; /* Alinea el botón a la derecha */
+    /* Estilos por defecto del botón, no necesitas modificarlos */
+  }
+  
+  .progress-bar {
+    margin-top: 5px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: auto; /* Altura automática */
+  }
+  
+  .icon-left {
+    max-height: 80px; /* Altura máxima de la imagen */
+  }
+  
