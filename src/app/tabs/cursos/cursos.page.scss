@@ -6,34 +6,34 @@
 
   .custom-section {
     display: flex;
-    align-items: center; /* Alinea los elementos verticalmente */
+    align-items: center;
     margin-bottom: 10px;
   }
   
   .left-column {
-    flex: 0 0 auto; /* No se estira, tamaño basado en contenido */
-    margin-right: 10px; /* Espacio entre las columnas */
+    flex: 0 0 auto; 
+    margin-right: 10px; 
   }
   
   .right-column {
     display: flex;
-    flex-direction: column; /* Columna para apilar elementos */
-    justify-content: flex-start; /* Alinea al inicio verticalmente */
-    flex-grow: 1; /* Ocupa el espacio restante */
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1; 
+    margin-right: 20px;
   }
   
   .normal-button {
-    align-self: flex-end; /* Alinea el botón a la derecha */
-    /* Estilos por defecto del botón, no necesitas modificarlos */
+    align-self: flex-end;
   }
   
   .progress-bar {
     margin-top: 5px;
-    width: 100%; /* Ocupa todo el ancho disponible */
-    height: auto; /* Altura automática */
+    width: 100%; 
+    height: auto; 
   }
   
   .icon-left {
-    max-height: 80px; /* Altura máxima de la imagen */
+    max-height: 70px;
   }
   
