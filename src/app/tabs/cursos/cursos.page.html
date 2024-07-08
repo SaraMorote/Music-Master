@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<!-- <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Todos los cursos</ion-title>
@@ -73,4 +73,21 @@
       </div>
     </section>
   </div>
+</ion-content> -->
+
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let curso of cursos">
+      <ion-thumbnail slot="start">
+        <img [src]="curso.imagen" alt="Imagen del curso">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ curso.nombre }}</h2>
+        <p>ID Curso: {{ curso.idCurso }}</p>
+        <p>Progreso: {{ curso.progreso }}%</p>
+        <p *ngIf="curso.seleccionado === 1">Seleccionado</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

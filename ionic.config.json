@@ -1,7 +1,10 @@
 {
   "name": "Music Master",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
   },
   "type": "angular",
   "server": {
