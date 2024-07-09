@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
-import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
+import { SQLitePorter } from '@awesome-cordova-plugins/sqlite-porter/ngx';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { ResponseType } from '@angular/http';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 
 export interface Cursos {
   idCurso: number,
@@ -96,9 +95,9 @@ export class DatabaseService {
     });
    }
 
-   /* getCurso(idCurso: number): Promise<Cursos> {
-    return this.database.executeSql('SELECT * FROM cursos where idCurso = ?', [idCurso]).then(data => {
-    
+   getCurso(idCurso: number): Observable<Cursos> {
+    return from( this.database.executeSql('SELECT * FROM cursos where idCurso = ?', [idCurso]).then((data: any) => {
+
     return {
       idCurso: data.rows.item(0).idCurso,
       nombre: data.rows.item(0).nombre,
@@ -106,11 +105,10 @@ export class DatabaseService {
       progreso: data.rows.item(0).progreso,
       seleccionado: data.rows.item(0).seleccionado
     }
-      
-    });
-   }
- */
 
+    }));
+   }
+    
    loadLecciones() {
     let query = 'SELECT * FROM lecciones JOIN cursos ON cursos.idCurso = lecciones.idLeccion';
     return this.database.executeSql(query, []).then(data => {

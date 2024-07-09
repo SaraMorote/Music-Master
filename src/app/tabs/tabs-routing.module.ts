@@ -9,7 +9,7 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'inicio',
+        path: 'inicio/:idCurso',
         loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
       },
       {

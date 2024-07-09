@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- <ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Todos los cursos</ion-title>
@@ -12,71 +12,23 @@
   </ion-header>
 
   <div class="allTheLevels">
-
-    <section class="custom-section">
-      <div class="left-column">
-        <img src="assets/images/icono 1º ee-ee.png" class="icon-left">
-      </div>
-      <div class="right-column">
-        <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
-        <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-      </div>
-    </section>
+    <ion-item *ngFor="let curso of cursos" style="border-color: transparent;">
+      <section class="custom-section">
+        <div class="left-column">
+          <img [src]="curso.imagen" alt="Imagen del curso" class="icon-left">
+        </div>
+        <div class="right-column">
+          <ion-button class="normal-button" size="small" size="small" [routerLink]="['/tabs/inicio', curso.idCurso]">Seleccionar</ion-button>
+          <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
+        </div>
+      </section>
+    </ion-item>
     
-    <section class="custom-section">
-      <div class="left-column">
-        <img src="assets/images/icono 2º ee-ee.png" class="icon-left">
-      </div>
-      <div class="right-column">
-        <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']" [disabled]="true">Seleccionado</ion-button>
-        <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-      </div>
-    </section>
-
-    <section class="custom-section">
-      <div class="left-column">
-        <img src="assets/images/icono 3º ee-ee.png" class="icon-left">
-      </div>
-      <div class="right-column">
-        <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
-        <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-      </div>
-    </section>
-
-    <section class="custom-section">
-      <div class="left-column">
-        <img src="assets/images/icono 4º ee-ee.png" class="icon-left">
-      </div>
-      <div class="right-column">
-        <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
-        <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-      </div>
-    </section>
-
-    <section class="custom-section">
-      <div class="left-column">
-        <img src="assets/images/icono 1º ee-pp.png" class="icon-left">
-      </div>
-      <div class="right-column">
-        <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
-        <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-      </div>
-    </section>
-
-    <section class="custom-section">
-      <div class="left-column">
-        <img src="assets/images/icono 2º ee-pp.png" class="icon-left">
-      </div>
-      <div class="right-column">
-        <ion-button class="normal-button" size="small" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
-        <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-      </div>
-    </section>
   </div>
-</ion-content> -->
+</ion-content>
 
 
-<ion-content>
+<!-- <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item *ngFor="let curso of cursos">
       <ion-thumbnail slot="start">
@@ -89,5 +41,69 @@
         <p *ngIf="curso.seleccionado === 1">Seleccionado</p>
       </ion-label>
     </ion-item>
+
+    
   </ion-list>
-</ion-content>
+</ion-content> -->
+
+
+
+<!-- <section class="custom-section">
+  <div class="left-column">
+    <img src="assets/images/icono 1º ee-ee.png" class="icon-left">
+  </div>
+  <div class="right-column">
+    <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
+    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
+  </div>
+</section>
+
+<section class="custom-section">
+  <div class="left-column">
+    <img src="assets/images/icono 2º ee-ee.png" class="icon-left">
+  </div>
+  <div class="right-column">
+    <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']" [disabled]="true">Seleccionado</ion-button>
+    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
+  </div>
+</section>
+
+<section class="custom-section">
+  <div class="left-column">
+    <img src="assets/images/icono 3º ee-ee.png" class="icon-left">
+  </div>
+  <div class="right-column">
+    <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
+    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
+  </div>
+</section>
+
+<section class="custom-section">
+  <div class="left-column">
+    <img src="assets/images/icono 4º ee-ee.png" class="icon-left">
+  </div>
+  <div class="right-column">
+    <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
+    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
+  </div>
+</section>
+
+<section class="custom-section">
+  <div class="left-column">
+    <img src="assets/images/icono 1º ee-pp.png" class="icon-left">
+  </div>
+  <div class="right-column">
+    <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
+    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
+  </div>
+</section>
+
+<section class="custom-section">
+  <div class="left-column">
+    <img src="assets/images/icono 2º ee-pp.png" class="icon-left">
+  </div>
+  <div class="right-column">
+    <ion-button class="normal-button" size="small" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
+    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
+  </div>
+</section> -->
