@@ -1,0 +1,82 @@
+.structureCurso {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+.custom-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .left-column {
+    flex: 0 0 auto; 
+    margin-right: 10px; 
+  }
+  
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1; 
+    margin-right: 20px;
+  }
+  
+  .normal-button {
+    align-self: flex-end;
+  }
+  
+  .progress-bar {
+    width: 100%; 
+    height: auto; 
+  }
+  
+  .icon-left {
+    max-height: 80px;
+  }
+
+  .imagenLeccion {
+    max-height: 40px;
+  }
+
+  .firstColumn {
+    flex: 0 0 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .secondColumn {
+    flex: 0 0 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+  }
+  
+  .thirdColumn {
+    flex: 0 0 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .imagenLeccion {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .estiloLecciones {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #CCB3FD;
+    border-radius: 60px;
+  }
+
+  .circulo {
+    border-radius: 60px;
+    background-color: #9168E1;
+  }
