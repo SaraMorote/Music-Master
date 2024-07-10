@@ -67,30 +67,18 @@
   </ion-header>
 
   <div class="structureLecciones">
-    <ion-item>
-      <section class="estiloLecciones">
-        <div class="firstColumn">
-          <img src="assets/images/clave de fa.png" alt="Imagen de la leccion" class="imagenLeccion">
-        </div>
-        <div class="secondColumn">
-          <p>Clave de Fa (4ª línea)</p>
-        </div>
-        <div class="thirdColumn circulo">
-          <p style="color: #FFFFFF;"><b>78%</b></p>
-        </div>
-      </section>
-    </ion-item>  
+    <span *ngIf="lecciones?.length === 0" style="margin-left: 20px;">No hay lecciones en este curso</span>
 
-    <ion-item>
+    <ion-item *ngFor="let leccion of lecciones">
       <section class="estiloLecciones">
         <div class="firstColumn">
-          <img src="assets/images/clave de fa.png" alt="Imagen de la leccion" class="imagenLeccion">
+          <img [src]="leccion.imagen" alt="Imagen de la leccion" class="imagenLeccion">
         </div>
         <div class="secondColumn">
-          <p>Clave de Fa (4ª línea)</p>
+          <p>{{ leccion.nombre}}</p>
         </div>
         <div class="thirdColumn circulo">
-          <p style="color: #FFFFFF;"><b>78%</b></p>
+          <p style="color: #FFFFFF;"><b>{{leccion.progreso}}</b></p>
         </div>
       </section>
     </ion-item> 

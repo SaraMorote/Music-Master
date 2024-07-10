@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Cursos, DatabaseService } from 'src/app/services/database.service';
+import { Cursos, DatabaseService, Lecciones } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-inicio',
@@ -9,27 +9,27 @@ import { Cursos, DatabaseService } from 'src/app/services/database.service';
 })
 export class InicioPage implements OnInit {
 
-  idCurso: number = 0;
+  idCurso: number = this.route.snapshot.params['idCurso'];
   curso?: Cursos;
+  lecciones?: Lecciones[];
 
   constructor(
     private route: ActivatedRoute, private db: DatabaseService
   ) { }
 
   ngOnInit() {
-    this.idCurso = Number(this.route.snapshot.paramMap.get("idCurso"))
-    console.log(this.idCurso)
 
     this.db.getDatabaseState().subscribe(ready => {
       if (ready) {
-        this.db.getCurso(this.idCurso).subscribe(cursos => {
-          console.log('curso: ', cursos);
+        this.db.getCurso(this.idCurso).then(cursos => {
           this.curso = cursos;
-          console.log(this.curso);
         });
         
+        this.db.getLeccionByCurso(this.idCurso).then(lecciones => {
+          this.lecciones = lecciones;
+          console.log(lecciones);
+        });
       }
     })
   }
-
 }

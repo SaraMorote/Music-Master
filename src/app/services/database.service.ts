@@ -15,6 +15,7 @@ export interface Cursos {
 
 export interface Lecciones {
   idLeccion: number,
+  numLeccion: number,
   curso: number,
   imagen: string,
   progreso: number,
@@ -55,10 +56,10 @@ export class DatabaseService {
     this.http.get('assets/bbdd.sql', { responseType: 'text'})
     .subscribe(sql => {
       this.sqlitePorter.importSqlToDb(this.database, sql)
-      .then(_ => {
+      .then(() => {
         this.loadCursos();
-        this.loadLecciones();
-        this.dbReady.next(true);
+/*         this.loadLecciones();
+ */        this.dbReady.next(true);
       })
       .catch(e => console.error(e));
     });
@@ -72,9 +73,9 @@ export class DatabaseService {
     return this.cursos.asObservable();
    }
 
-   getLecciones(): Observable<Lecciones[]> {
+   /* getLecciones(): Observable<Lecciones[]> {
     return this.lecciones.asObservable();
-   }
+   } */
 
    loadCursos() {
     return this.database.executeSql('SELECT * FROM cursos', []).then(data => {
@@ -95,8 +96,8 @@ export class DatabaseService {
     });
    }
 
-   getCurso(idCurso: number): Observable<Cursos> {
-    return from( this.database.executeSql('SELECT * FROM cursos where idCurso = ?', [idCurso]).then((data: any) => {
+   getCurso(idCurso: number): Promise<Cursos> {
+    return this.database.executeSql('SELECT * FROM cursos where idCurso = ?', [idCurso]).then((data: any) => {
 
     return {
       idCurso: data.rows.item(0).idCurso,
@@ -106,10 +107,35 @@ export class DatabaseService {
       seleccionado: data.rows.item(0).seleccionado
     }
 
-    }));
+    });
+   }
+
+   getLeccionByCurso(idCurso: number): Promise<Lecciones[]> {
+    let query = 'SELECT * FROM lecciones  where curso = ?';
+
+    return this.database.executeSql(query, [idCurso]).then((data: any) => {
+
+      let lecciones: Lecciones[] = [];
+
+      if(data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          lecciones.push({
+            idLeccion: data.rows.item(i).idLeccion,
+            numLeccion: data.rows.item(i).numLeccion,
+            curso: data.rows.item(i).curso,
+            imagen: data.rows.item(i).imagen,
+            progreso: data.rows.item(i).progreso,
+            nombre: data.rows.item(i).nombre
+          });
+        }
+      }
+
+     return lecciones
+  
+      });
    }
     
-   loadLecciones() {
+   /* loadLecciones() {
     let query = 'SELECT * FROM lecciones JOIN cursos ON cursos.idCurso = lecciones.idLeccion';
     return this.database.executeSql(query, []).then(data => {
       let lecciones: Lecciones[] = [];
@@ -126,5 +152,7 @@ export class DatabaseService {
       }
       this.lecciones.next(lecciones);
     })
-   }
+   } */
+
+
 }

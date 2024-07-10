@@ -22,7 +22,7 @@ export class CursosPage implements OnInit {
           console.log('cursos: ', cursos);
           this.cursos = cursos;
         });
-        this.lecciones = this.db.getLecciones();
+        /* this.lecciones = this.db.getLecciones(); */
       }
     })
   }

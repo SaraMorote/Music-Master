@@ -19,91 +19,10 @@
         </div>
         <div class="right-column">
           <ion-button class="normal-button" size="small" size="small" [routerLink]="['/tabs/inicio', curso.idCurso]">Seleccionar</ion-button>
-          <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
+          <ion-progress-bar type="determinate" [value]="curso.progreso/100" class="progress-bar" color="primary"></ion-progress-bar>
         </div>
       </section>
     </ion-item>
     
   </div>
 </ion-content>
-
-
-<!-- <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item *ngFor="let curso of cursos">
-      <ion-thumbnail slot="start">
-        <img [src]="curso.imagen" alt="Imagen del curso">
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{ curso.nombre }}</h2>
-        <p>ID Curso: {{ curso.idCurso }}</p>
-        <p>Progreso: {{ curso.progreso }}%</p>
-        <p *ngIf="curso.seleccionado === 1">Seleccionado</p>
-      </ion-label>
-    </ion-item>
-
-    
-  </ion-list>
-</ion-content> -->
-
-
-
-<!-- <section class="custom-section">
-  <div class="left-column">
-    <img src="assets/images/icono 1º ee-ee.png" class="icon-left">
-  </div>
-  <div class="right-column">
-    <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
-    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-  </div>
-</section>
-
-<section class="custom-section">
-  <div class="left-column">
-    <img src="assets/images/icono 2º ee-ee.png" class="icon-left">
-  </div>
-  <div class="right-column">
-    <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']" [disabled]="true">Seleccionado</ion-button>
-    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-  </div>
-</section>
-
-<section class="custom-section">
-  <div class="left-column">
-    <img src="assets/images/icono 3º ee-ee.png" class="icon-left">
-  </div>
-  <div class="right-column">
-    <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
-    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-  </div>
-</section>
-
-<section class="custom-section">
-  <div class="left-column">
-    <img src="assets/images/icono 4º ee-ee.png" class="icon-left">
-  </div>
-  <div class="right-column">
-    <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
-    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-  </div>
-</section>
-
-<section class="custom-section">
-  <div class="left-column">
-    <img src="assets/images/icono 1º ee-pp.png" class="icon-left">
-  </div>
-  <div class="right-column">
-    <ion-button class="normal-button" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
-    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-  </div>
-</section>
-
-<section class="custom-section">
-  <div class="left-column">
-    <img src="assets/images/icono 2º ee-pp.png" class="icon-left">
-  </div>
-  <div class="right-column">
-    <ion-button class="normal-button" size="small" size="small" [routerLink]="['/tabs/inicio']">Seleccionar</ion-button>
-    <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
-  </div>
-</section> -->
