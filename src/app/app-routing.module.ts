@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'prueba-nivel',
+    loadChildren: () => import('./prueba-nivel/prueba-nivel.module').then( m => m.PruebaNivelPageModule)
   }
 
 ];

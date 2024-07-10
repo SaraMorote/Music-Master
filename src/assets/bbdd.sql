@@ -1,12 +1,15 @@
 /* CREATES */
 /* CURSOS */
 CREATE TABLE IF NOT EXISTS cursos (
-	idCurso	INTEGER PRIMARY KEY AUTOINCREMENT,
-	nombre text, 
-	imagen text, /* url imagen en assets/images/... */
-	progreso INTEGER,
+
+	idCurso INTEGER PRIMARY KEY AUTOINCREMENT,
+	nombre TEXT,
+	imagen TEXT, /* url imagen en assets/images/... */
+	progreso INTEGER CHECK(progreso >= 0 AND progreso <= 100),
 	seleccionado INTEGER /* 0 no seleccionado - 1 seleccionado */
 );
+
+
 
 /* LECCIONES */
 CREATE TABLE IF NOT EXISTS lecciones (
@@ -15,13 +18,35 @@ CREATE TABLE IF NOT EXISTS lecciones (
 	curso	INTEGER, /* el mismo que el id de cursos */
 	nombre	TEXT,
 	imagen	TEXT,
-	progreso	INTEGER,
+	progreso INTEGER CHECK(progreso >= 0 AND progreso <= 100),
 	FOREIGN KEY(curso) REFERENCES cursos(idCurso)
 );
 
-/* PRUEBA DE NIVEL */
+/* EJERCICIOS SELECCION */
+CREATE TABLE IF NOT EXISTS ejerciciosSelección (
+	idEjercicio INTEGER PRIMARY KEY AUTOINCREMENT,
+	tipoPregunta TEXT,
+	enunciado TEXT,
+	recursoMultimedia TEXT,
+	idLeccion INTEGER,
+	FOREIGN KEY(idLeccion) REFERENCES lecciones(idLeccion)
+);
+
+/* EJERCICIOS COLUMNAS */
+
+/* RESPUESTAS */
+CREATE TABLE IF NOT EXISTS respuestas (
+	idRespuesta INTEGER PRIMARY KEY AUTOINCREMENT,
+	idEjercicio INTEGER,
+	recursoMultimedia TEXT,
+	valorRespuesta TEXT,
+	imagen INTEGER, /* 0 no tiene foto - 1 tiene foto */
+	audio INTEGER, /* 0 no tiene audio - 1 tiene audio */
+	esCorrecto INTEGER, /* 0 no tiene foto - 1 tiene foto */
+	FOREIGN KEY(idEjercicio) REFERENCES ejerciciosSelección(idEjercicio)
+);
+
 /* APUNTES */
-/* EJERCICIOS */
 
 
 /* INSERTS */
@@ -148,7 +173,7 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (15, 5, 'assets/images/cambiar.png', 'Adornos', 0);
 
 /* 2º ee.pp */
-/* INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (1, 6, 'assets/images/cambiar.png', 'Acordes tríadas', 0);
+INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (1, 6, 'assets/images/cambiar.png', 'Acordes tríadas', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (2, 6, 'assets/images/cambiar.png', 'Escalas con acordes tríadas', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (3, 6, 'assets/images/cambiar.png', 'Acordes cuatríadas', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (4, 6, 'assets/images/cambiar.png', 'Acorde de 9ª dominante', 0);
@@ -157,4 +182,12 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (7, 6, 'assets/images/cambiar.png', 'Transporte', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (8, 6, 'assets/images/cambiar.png', 'Instrumentos transpositores', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (9, 6, 'assets/images/cambiar.png', 'La notación musical', 0);
- */
+
+
+
+INSERT or IGNORE INTO ejerciciosSelección (tipoPregunta, enunciado, recursoMultimedia, idLeccion) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota?', 'assets/images/logo.png', 4);
+
+INSERT or IGNORE INTO respuestas (valorRespuesta, recursoMultimedia, imagen, audio, esCorrecto, idEjercicio) VALUES ('Sol', '', 0, 0, 1, 1);
+INSERT or IGNORE INTO respuestas (valorRespuesta, recursoMultimedia, imagen, audio, esCorrecto, idEjercicio) VALUES ('Do', '', 0, 0, 0, 1);
+INSERT or IGNORE INTO respuestas (valorRespuesta, recursoMultimedia, imagen, audio, esCorrecto, idEjercicio) VALUES ('Mi', '', 0, 0, 0, 1);
+INSERT or IGNORE INTO respuestas (valorRespuesta, recursoMultimedia, imagen, audio, esCorrecto, idEjercicio) VALUES ('La', '', 0, 0, 0, 1);

@@ -9,6 +9,10 @@
     font-family: 'Montserrat', sans-serif;
   }
 
+  :root {
+    --ion-color-tertiary: #49209B;
+  }
+
 
 .ios, .md {
     --ion-tab-bar-background: #FFFFFF;
@@ -53,3 +57,9 @@ ion-tab-bar {
     height: 100px;
     margin-bottom: -30px;
 }
+
+ion-progress-bar {
+    --progress-background: #49209B;
+    --buffer-background: #CCB3FD;
+}
+

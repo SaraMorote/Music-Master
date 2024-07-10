@@ -22,6 +22,24 @@ export interface Lecciones {
   nombre: string
 }
 
+export interface EjerciciosSeleccion {
+  idEjercicio: number,
+  tipoPregunta: string,
+  enunciado: string,
+  recursoMultimedia: string,
+  idLeccion: number
+}
+
+export interface Respuestas {
+  idRespuesta: number,
+  idEjercicio: number,
+  recursoMultimedia: string,
+  valorRespuesta: string,
+  imagen: number,
+  audio: number,
+  esCorrecto: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,7 +49,7 @@ export class DatabaseService {
   
   //declaracion tablas bbdd
   cursos = new BehaviorSubject<Cursos[]>([]);
-  lecciones = new BehaviorSubject<Lecciones[]>([]);
+  lecciones = new BehaviorSubject<Lecciones[]>([]); 
 
   constructor(private plt: Platform, private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient) {
     console.log(plt);
@@ -135,6 +153,30 @@ export class DatabaseService {
       });
    }
     
+   getEjercicios(): Promise<EjerciciosSeleccion[]> {
+    let query = 'SELECT * FROM ejercicios';
+
+    return this.database.executeSql(query).then((data: any) => {
+
+      let ejercicios: EjerciciosSeleccion[] = [];
+
+      if(data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          ejercicios.push({
+            idEjercicio: data.rows.item(i).idEjercicio,
+            tipoPregunta: data.rows.item(i).tipoPregunta,
+            enunciado: data.rows.item(i).enunciado,
+            recursoMultimedia: data.rows.item(i).recursoMultimedia,
+            idLeccion: data.rows.item(i).idLeccion
+          });
+        }
+      }
+
+     return ejercicios
+  
+      });
+   }
+
    /* loadLecciones() {
     let query = 'SELECT * FROM lecciones JOIN cursos ON cursos.idCurso = lecciones.idLeccion';
     return this.database.executeSql(query, []).then(data => {

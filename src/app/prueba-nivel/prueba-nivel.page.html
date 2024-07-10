@@ -1,0 +1,33 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="posicionTitulos">Prueba de nivel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Prueba de nivel</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <section>
+      <p>Selecciona la respuesta</p>
+      <p>¿Cuál es esta nota?</p>
+    </section>
+  </ion-item>  
+
+  <ion-item>
+    <section>
+      <p>Sol</p>
+      <p>Do</p>
+      <p>Mi</p>
+      <p>Re</p>
+    </section>
+  </ion-item>
+
+  <div class="centrarBoton">
+    <ion-button [routerLink]="['/tabs/inicio/1']" class="elongated-button">Continuar</ion-button>
+  </div>
+</ion-content>
