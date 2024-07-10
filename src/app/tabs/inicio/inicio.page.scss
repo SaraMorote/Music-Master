@@ -5,7 +5,7 @@
 }
 
 .structureLecciones {
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 30px;
     margin-left: 30px;
     margin-right: 30px;
@@ -80,10 +80,14 @@
     width: 100%;
     align-items: center;
     background-color: #CCB3FD;
-    border-radius: 60px;
+    border-radius: 20px;
+    padding: 7px;
+    margin-bottom: 10px;
+    box-shadow: 0px 7px 7px 0px #3f3b3b;
   }
 
   .circulo {
-    border-radius: 60px;
+    clip-path: circle(40%);
+   /*  border-radius: 60px; */
     background-color: #9168E1;
   }

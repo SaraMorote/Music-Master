@@ -49,13 +49,18 @@ CREATE TABLE IF NOT EXISTS respuestas (
 /* CURSOS */
 INSERT or IGNORE INTO cursos VALUES (1, '1º Enseñanzas Elementales', 'assets/images/icono 1º ee-ee.png', 0, 0);
 INSERT or IGNORE INTO cursos VALUES (2, '2º Enseñanzas Elementales', 'assets/images/icono 2º ee-ee.png', 0, 0);
-INSERT or IGNORE INTO cursos VALUES (3, '3º Enseñanzas Elementales', 'assets/images/icono 3º ee-ee.png', 0, 1); 
-INSERT or IGNORE INTO cursos VALUES (4, '4º Enseñanzas Elementales', 'assets/images/icono 4º ee-ee.png', 0, 0);
+INSERT or IGNORE INTO cursos VALUES (3, '3º Enseñanzas Elementales', 'assets/images/icono 3º ee-ee.png', 0, 0); 
+INSERT or IGNORE INTO cursos VALUES (4, '4º Enseñanzas Elementales', 'assets/images/icono 4º ee-ee.png', 0, 1);
 INSERT or IGNORE INTO cursos VALUES (5, '1º Enseñanzas Profesionales', 'assets/images/icono 1º ee-pp.png', 0, 0);
 INSERT or IGNORE INTO cursos VALUES (6, '2º Enseñanzas Profesionales', 'assets/images/icono 2º ee-pp.png', 0, 0);
 
+/* LECCIONES */
+INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (1, 3, 'assets/images/clave de fa.png', 'Clave de Fa (4ª linea)', 0);
+
+
 /* LECCIONES DE CADA CURSO */
 /* 1º ee.ee */
+
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (1, 1, 'assets/images/cambiar.png', 'Pentagrama', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (2, 1, 'assets/images/cambiar.png', 'Clave de SOL', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (3, 1, 'assets/images/cambiar.png', 'Notas (DO3 a DO4)', 0);
@@ -85,7 +90,7 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (27, 1, 'assets/images/cambiar.png', 'Síncopa larga', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (28, 1, 'assets/images/cambiar.png', 'Tempo', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (29, 1, 'assets/images/cambiar.png', 'Dinámica', 0);
-INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (30, 1, 'assets/images/cambiar.png', 'Clave de FA (4ª línea)', 0);
+INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (30, 1, 'assets/images/clave de fa.png', 'Clave de FA (4ª línea)', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (31, 1, 'assets/images/cambiar.png', 'Semicorcheas', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (32, 1, 'assets/images/cambiar.png', 'Notas (MI2 a DO5)', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (33, 1, 'assets/images/cambiar.png', 'Nota a contratiempo', 0);
@@ -117,7 +122,7 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (19, 2, 'assets/images/cambiar.png', 'Nombre grados de la escala', 0);
 
 /* 3º ee.ee */
-INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (1, 3, 'assets/images/cambiar.png', 'Intervalos aumentados y disminuidos', 0);
+/* INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (1, 3, 'assets/images/cambiar.png', 'Intervalos aumentados y disminuidos', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (2, 3, 'assets/images/cambiar.png', 'Tonalidades relativas', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (3, 3, 'assets/images/cambiar.png', 'Escritura de la armadura', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (4, 3, 'assets/images/cambiar.png', 'Orden de los sostenidos y bemoles', 0);
@@ -136,7 +141,7 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (17, 3, 'assets/images/cambiar.png', 'Tonalidades vecinas', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (18, 3, 'assets/images/cambiar.png', 'Seisillo', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (19, 3, 'assets/images/cambiar.png', 'Síncopa', 0);
-INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (20, 3, 'assets/images/cambiar.png', 'Matices agógicos', 0);
+INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (20, 3, 'assets/images/cambiar.png', 'Matices agógicos', 0); */
 
 /* 4º ee.ee */
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (1, 4, 'assets/images/cambiar.png', 'Escalas mayores y sus tipos', 0);

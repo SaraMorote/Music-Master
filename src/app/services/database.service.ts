@@ -49,11 +49,10 @@ export class DatabaseService {
   
   //declaracion tablas bbdd
   cursos: Cursos[] = [];
-/*   lecciones: Lecciones[] = [];
- */ 
+  
+  /* lecciones: Lecciones[] = []; */ 
   /* ejercicios: EjerciciosSeleccion[] = []; */
-
-  lecciones = new BehaviorSubject<Lecciones[]>([]); 
+  /* lecciones = new BehaviorSubject<Lecciones[]>([]); */
 
   constructor(private plt: Platform, private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient) {
     console.log(plt);
@@ -154,7 +153,7 @@ export class DatabaseService {
         }
       }
 
-     return lecciones
+      return lecciones
   
       });
    }
