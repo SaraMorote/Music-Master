@@ -18,14 +18,8 @@ export class CursosPage implements OnInit {
   ngOnInit() {
     this.db.getDatabaseState().subscribe(ready => {
       if (ready) {
-        this.db.getCursos().subscribe(cursos => {
-          console.log('cursos: ', cursos);
-          this.cursos = cursos;
-        });
-        /* this.lecciones = this.db.getLecciones(); */
+        this.cursos = this.db.getCursos();
       }
     })
   }
-
- 
 }

@@ -3,7 +3,7 @@ import { Platform } from '@ionic/angular';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 import { SQLitePorter } from '@awesome-cordova-plugins/sqlite-porter/ngx';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, from, Observable } from 'rxjs';
+import { BehaviorSubject, from, lastValueFrom, Observable } from 'rxjs';
 
 export interface Cursos {
   idCurso: number,
@@ -48,7 +48,11 @@ export class DatabaseService {
   private dbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
   
   //declaracion tablas bbdd
-  cursos = new BehaviorSubject<Cursos[]>([]);
+  cursos: Cursos[] = [];
+/*   lecciones: Lecciones[] = [];
+ */ 
+  /* ejercicios: EjerciciosSeleccion[] = []; */
+
   lecciones = new BehaviorSubject<Lecciones[]>([]); 
 
   constructor(private plt: Platform, private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient) {
@@ -70,30 +74,32 @@ export class DatabaseService {
     });
    }
 
-   seedDatabase() {
-    this.http.get('assets/bbdd.sql', { responseType: 'text'})
-    .subscribe(sql => {
-      this.sqlitePorter.importSqlToDb(this.database, sql)
-      .then(() => {
-        this.loadCursos();
-/*         this.loadLecciones();
- */        this.dbReady.next(true);
-      })
-      .catch(e => console.error(e));
-    });
+   async seedDatabase() {
+    try {
+      const sql = await lastValueFrom(this.http.get('assets/bbdd.sql', { responseType: 'text'}));
+      await this.sqlitePorter.importSqlToDb(this.database, sql);
+
+      await this.loadCursos();
+      // this.loadLecciones();
+      // this.loadEjercicios();
+
+      this.dbReady.next(true);
+
+      console.log("LISTO");
+
+    } catch (error) {
+      console.log('Error inicializando la base de datos: ', error);
+      throw error;
+    }
    }
 
    getDatabaseState() {
     return this.dbReady.asObservable();
    }
 
-   getCursos(): Observable<Cursos[]> {
-    return this.cursos.asObservable();
+   getCursos() {
+    return this.cursos;
    }
-
-   /* getLecciones(): Observable<Lecciones[]> {
-    return this.lecciones.asObservable();
-   } */
 
    loadCursos() {
     return this.database.executeSql('SELECT * FROM cursos', []).then(data => {
@@ -110,7 +116,7 @@ export class DatabaseService {
           });
         }
       }
-      this.cursos.next(cursos);
+      this.cursos = cursos;
     });
    }
 
@@ -154,7 +160,7 @@ export class DatabaseService {
    }
     
    getEjercicios(): Promise<EjerciciosSeleccion[]> {
-    let query = 'SELECT * FROM ejercicios';
+    let query = 'SELECT * FROM ejerciciosSeleccion';
 
     return this.database.executeSql(query).then((data: any) => {
 
@@ -176,25 +182,5 @@ export class DatabaseService {
   
       });
    }
-
-   /* loadLecciones() {
-    let query = 'SELECT * FROM lecciones JOIN cursos ON cursos.idCurso = lecciones.idLeccion';
-    return this.database.executeSql(query, []).then(data => {
-      let lecciones: Lecciones[] = [];
-      if (data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
-          lecciones.push({
-            idLeccion: data.rows.item(i).idLeccion,
-            curso: data.rows.item(i).curso,
-            imagen: data.rows.item(i).imagen,
-            progreso: data.rows.item(i).progreso,
-            nombre: data.rows.item(i).nombre
-          });
-        }
-      }
-      this.lecciones.next(lecciones);
-    })
-   } */
-
 
 }

@@ -1,15 +1,12 @@
 /* CREATES */
 /* CURSOS */
 CREATE TABLE IF NOT EXISTS cursos (
-
 	idCurso INTEGER PRIMARY KEY AUTOINCREMENT,
 	nombre TEXT,
 	imagen TEXT, /* url imagen en assets/images/... */
 	progreso INTEGER CHECK(progreso >= 0 AND progreso <= 100),
 	seleccionado INTEGER /* 0 no seleccionado - 1 seleccionado */
 );
-
-
 
 /* LECCIONES */
 CREATE TABLE IF NOT EXISTS lecciones (
@@ -23,7 +20,7 @@ CREATE TABLE IF NOT EXISTS lecciones (
 );
 
 /* EJERCICIOS SELECCION */
-CREATE TABLE IF NOT EXISTS ejerciciosSelección (
+CREATE TABLE IF NOT EXISTS ejerciciosSeleccion (
 	idEjercicio INTEGER PRIMARY KEY AUTOINCREMENT,
 	tipoPregunta TEXT,
 	enunciado TEXT,
@@ -43,11 +40,10 @@ CREATE TABLE IF NOT EXISTS respuestas (
 	imagen INTEGER, /* 0 no tiene foto - 1 tiene foto */
 	audio INTEGER, /* 0 no tiene audio - 1 tiene audio */
 	esCorrecto INTEGER, /* 0 no tiene foto - 1 tiene foto */
-	FOREIGN KEY(idEjercicio) REFERENCES ejerciciosSelección(idEjercicio)
+	FOREIGN KEY(idEjercicio) REFERENCES ejerciciosSeleccion(idEjercicio)
 );
 
 /* APUNTES */
-
 
 /* INSERTS */
 /* CURSOS */
@@ -55,8 +51,8 @@ INSERT or IGNORE INTO cursos VALUES (1, '1º Enseñanzas Elementales', 'assets/i
 INSERT or IGNORE INTO cursos VALUES (2, '2º Enseñanzas Elementales', 'assets/images/icono 2º ee-ee.png', 0, 0);
 INSERT or IGNORE INTO cursos VALUES (3, '3º Enseñanzas Elementales', 'assets/images/icono 3º ee-ee.png', 0, 1); 
 INSERT or IGNORE INTO cursos VALUES (4, '4º Enseñanzas Elementales', 'assets/images/icono 4º ee-ee.png', 0, 0);
-INSERT or IGNORE INTO cursos VALUES (5, '1º Enseñanzas Elementales', 'assets/images/icono 1º ee-pp.png', 0, 0);
-INSERT or IGNORE INTO cursos VALUES (6, '2º Enseñanzas Elementales', 'assets/images/icono 2º ee-pp.png', 0, 0);
+INSERT or IGNORE INTO cursos VALUES (5, '1º Enseñanzas Profesionales', 'assets/images/icono 1º ee-pp.png', 0, 0);
+INSERT or IGNORE INTO cursos VALUES (6, '2º Enseñanzas Profesionales', 'assets/images/icono 2º ee-pp.png', 0, 0);
 
 /* LECCIONES DE CADA CURSO */
 /* 1º ee.ee */
@@ -185,7 +181,7 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 
 
 
-INSERT or IGNORE INTO ejerciciosSelección (tipoPregunta, enunciado, recursoMultimedia, idLeccion) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota?', 'assets/images/logo.png', 4);
+INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, idLeccion) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota?', 'assets/images/logo.png', 4);
 
 INSERT or IGNORE INTO respuestas (valorRespuesta, recursoMultimedia, imagen, audio, esCorrecto, idEjercicio) VALUES ('Sol', '', 0, 0, 1, 1);
 INSERT or IGNORE INTO respuestas (valorRespuesta, recursoMultimedia, imagen, audio, esCorrecto, idEjercicio) VALUES ('Do', '', 0, 0, 0, 1);
