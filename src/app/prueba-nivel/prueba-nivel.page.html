@@ -11,23 +11,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item>
+  <ion-item *ngIf="ejercicios.length != 0" lines="none">
     <section>
-      <p>Selecciona la respuesta</p>
-      <p>¿Cuál es esta nota?</p>
+      <p> {{ ejercicios[numEjercicio].tipoPregunta}} </p>
+      <p> {{ ejercicios[numEjercicio].enunciado}} </p>
     </section>
   </ion-item>  
 
-  <ion-item>
-    <section>
-      <p>Sol</p>
-      <p>Do</p>
-      <p>Mi</p>
-      <p>Re</p>
-    </section>
-  </ion-item>
+  <ion-list>
+    <ion-radio-group>
+      <ion-item *ngFor="let respuesta of respuestas" lines="none">
+        <ion-radio [value]="respuesta.valorRespuesta">{{ respuesta.valorRespuesta }}</ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
 
   <div class="centrarBoton">
-    <ion-button [routerLink]="['/tabs/inicio/1']" class="elongated-button">Continuar</ion-button>
+    <ion-button (click)="nextEjercicio()" class="elongated-button">Continuar</ion-button>
   </div>
 </ion-content>

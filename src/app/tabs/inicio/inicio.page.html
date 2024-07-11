@@ -1,6 +1,6 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title class="posicionTitulos">Inicio</ion-title>
+    <ion-title class="posicionTitulos">Curso actual</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,15 +11,15 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="structureCurso">
-    <ion-item>
+  <div class="structureCurso" *ngIf="curso">
+    <ion-item lines="none">
       <section class="custom-section">
         <div class="left-column">
-          <img [src]="curso?.imagen ?? ''" alt="Imagen del curso" class="icon-left">
+          <img [src]="curso.imagen" alt="Imagen del curso" class="icon-left">
         </div>
         <div class="right-column">
-          <p>{{ curso?.progreso }}% progreso</p>
-          <img src="assets/images/barra progreso estatica provisional.png" class="progress-bar">
+          <p>{{ curso.progreso }}% progreso</p>
+          <ion-progress-bar [value]="curso.progreso/100" class="progress-bar" color="tertiary"></ion-progress-bar>
         </div>
       </section>
     </ion-item>  
@@ -32,9 +32,8 @@
   </ion-header>
 
   <div class="structureLecciones">
-    <span *ngIf="lecciones?.length === 0" style="margin-left: 20px;">No hay lecciones en este curso</span>
 
-    <ion-item *ngFor="let leccion of lecciones">
+    <ion-item *ngFor="let leccion of lecciones" lines="none">
       <section class="estiloLecciones">
         <div class="firstColumn">
           <img [src]="leccion.imagen" alt="Imagen de la leccion" class="imagenLeccion">

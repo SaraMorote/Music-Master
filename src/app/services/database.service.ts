@@ -161,7 +161,7 @@ export class DatabaseService {
    getEjercicios(): Promise<EjerciciosSeleccion[]> {
     let query = 'SELECT * FROM ejerciciosSeleccion';
 
-    return this.database.executeSql(query).then((data: any) => {
+    return this.database.executeSql(query, []).then((data: any) => {
 
       let ejercicios: EjerciciosSeleccion[] = [];
 
@@ -181,5 +181,31 @@ export class DatabaseService {
   
       });
    }
+
+   getRespuestasByEjercicio(idEjercicio: number){
+    let query = 'SELECT * FROM respuestas where idEjercicio = ?';
+
+    return this.database.executeSql(query, [idEjercicio]).then((data: any) => {
+
+      let respuestas: Respuestas[] = [];
+
+      if(data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          respuestas.push({
+            idRespuesta: data.rows.item(i).idRespuesta,
+            audio: data.rows.item(i).audio,
+            imagen: data.rows.item(i).imagen,
+            esCorrecto: data.rows.item(i).esCorrecto,
+            valorRespuesta: data.rows.item(i).valorRespuesta,
+            recursoMultimedia: data.rows.item(i).recursoMultimedia,
+            idEjercicio: data.rows.item(i).idEjercicio
+          });
+        }
+      }
+
+      return respuestas;
+
+    });
+  }
 
 }
