@@ -1,0 +1,19 @@
+.hidden-radio {
+    --background: transparent;
+    --border-color: transparent;
+    --border-width: 0;
+    --margin-start: 0;
+    --padding-start: 0;
+  }
+
+  img {
+    width: 40px;
+  }
+
+  .radio-image {
+    border: 1px solid #9168E1;
+  }
+
+  .radio-image-selected {
+    border: 4px solid #49209B;
+  }

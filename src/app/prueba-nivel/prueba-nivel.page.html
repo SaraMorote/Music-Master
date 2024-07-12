@@ -26,9 +26,9 @@
 
         <div *ngIf="respuesta.imagen === 1">
           <ion-label>
-            <img [src]="respuesta.recursoMultimedia" alt="img" class="radio-image">
+            <img [ngClass]="{'radio-image-selected': respuesta.idRespuesta === opcionSeleccionada, 'radio-image': respuesta.idEjercicio !== opcionSeleccionada}" [src]="respuesta.recursoMultimedia" alt="img" class="radio-image">
           </ion-label>
-          <ion-radio slot="start" [value]="respuesta.idRespuesta"></ion-radio>
+          <ion-radio slot="start" [value]="respuesta.idRespuesta" class="hidden-radio"></ion-radio>
         </div>
       </ion-item>
     </ion-radio-group>
