@@ -19,9 +19,17 @@
   </ion-item>  
 
   <ion-list>
-    <ion-radio-group>
+    <ion-radio-group (ionChange)="guardarSeleccion($event)">
       <ion-item *ngFor="let respuesta of respuestas" lines="none">
-        <ion-radio [value]="respuesta.valorRespuesta">{{ respuesta.valorRespuesta }}</ion-radio>
+
+        <ion-radio *ngIf="respuesta.imagen === 0" [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta }}</ion-radio>
+
+        <div *ngIf="respuesta.imagen === 1">
+          <ion-label>
+            <img [src]="respuesta.recursoMultimedia" alt="img" class="radio-image">
+          </ion-label>
+          <ion-radio slot="start" [value]="respuesta.idRespuesta"></ion-radio>
+        </div>
       </ion-item>
     </ion-radio-group>
   </ion-list>
