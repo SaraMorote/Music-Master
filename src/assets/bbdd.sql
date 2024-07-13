@@ -276,5 +276,5 @@ INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, es
 INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La10', '', 0, 10);
 
 
-INSERT or IGNORE INTO ejerciciosParejas (idEjercicio, tipoPregunta, enunciado) VALUES (1, 'Selecciona las parejas', 'Aaaaaaa');
+INSERT or IGNORE INTO ejerciciosParejas (idEjercicio, tipoPregunta, enunciado) VALUES (2, 'Selecciona las parejas', 'Aaaaaaa');
 INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2) VALUES (1, 'La', 'Do');
