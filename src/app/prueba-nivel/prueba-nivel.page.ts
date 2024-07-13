@@ -148,7 +148,6 @@ export class PruebaNivelPage implements OnInit {
       console.log(this.numParejas)
       console.log('Pareja correcta')
 
-      
     }
     else {
       console.log('Incorrecto')
