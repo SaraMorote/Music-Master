@@ -30,11 +30,11 @@
 
             <ion-radio *ngIf="ejercicioSeleccion[0].tipoRecurso === 0" [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta }}</ion-radio>
 
-            <div *ngIf="ejercicioSeleccion[0].tipoRecurso === 1">
+            <div *ngIf="ejercicioSeleccion[0].tipoRecurso === 1" class="positionImg">
               <ion-label>
                 <img [ngClass]="{'radio-image-selected': respuesta.idRespuesta === opcionSeleccionada, 'radio-image': respuesta.idRespuesta !== opcionSeleccionada}" [src]="respuesta.recursoMultimedia" alt="img" class="radio-image">
               </ion-label>
-              <ion-radio slot="start" [value]="respuesta.idRespuesta" class="hidden-radio"></ion-radio>
+              <ion-radio slot="start" [value]="respuesta.idRespuesta"></ion-radio>
             </div>
           </ion-item>
         </ion-radio-group>
@@ -71,7 +71,7 @@
               <ion-radio-group (ionChange)="guardarPareja2($event)">
                 <ion-item *ngFor="let respuesta of respuestasParejas" lines="none">
 
-                  <ion-radio *ngIf="" [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta2 }}</ion-radio>
+                  <ion-radio [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta2 }}</ion-radio>
 
                 </ion-item>
               </ion-radio-group>

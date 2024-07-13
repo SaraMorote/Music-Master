@@ -42,7 +42,6 @@ export interface EjerciciosParejas {
   enunciado: string,
 }
 
-
 export interface RespuestasSeleccion {
   idRespuesta: number,
   idEjercicio: number,

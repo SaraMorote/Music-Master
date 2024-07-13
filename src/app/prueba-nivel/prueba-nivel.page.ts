@@ -82,12 +82,14 @@ export class PruebaNivelPage implements OnInit {
       }
       else{
         // Mostrar modal rojo
-        console.log("POBRE")
+        console.log("ERROR")
+        console.log(this.numAciertos)
       }
     }
     else {
       this.numAciertos++;
       this.numParejas = 0;
+      console.log(this.numAciertos)
     }
 
     this.numEjercicio++;
