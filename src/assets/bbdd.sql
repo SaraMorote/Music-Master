@@ -63,6 +63,8 @@ CREATE TABLE IF NOT EXISTS respuestasParejas (
 	idEjercicio INTEGER,
 	valorRespuesta1 TEXT,
 	valorRespuesta2 TEXT,
+	esCorrecto1 INTEGER,
+	esCorrecto2 INTEGER,
 	FOREIGN KEY(idEjercicio) REFERENCES ejerciciosParejas(idEjercicio)
 );
 
@@ -207,74 +209,33 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (9, 6, 'assets/images/imagenesLecciones/figuras.png', 'La notación musical', 0);
 
 
+/* Prueba de nivel */
 
 INSERT or IGNORE INTO ejercicios VALUES (1, "Seleccion", 1);
 INSERT or IGNORE INTO ejercicios VALUES (2, "Parejas", 1);
+INSERT or IGNORE INTO ejercicios VALUES (3, "Seleccion", 1);
+INSERT or IGNORE INTO ejercicios VALUES (4, "Parejas", 1);
 
-
-
-INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, tipoRecurso, idEjercicio) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota? 1', 'assets/images/logo.png', 0, 1);
-INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota? 2', 'assets/images/logo.png', 1);
-INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota? 2', 'assets/images/logo.png', 0);
-INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota? 2', 'assets/images/logo.png', 0);
-INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota? 2', 'assets/images/logo.png', 0);
-INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota? 2', 'assets/images/logo.png', 0);
-INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota? 2', 'assets/images/logo.png', 0);
-INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota? 2', 'assets/images/logo.png', 0);
-INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota? 2', 'assets/images/logo.png', 0);
-INSERT or IGNORE INTO ejerciciosSeleccion (tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES ('Selecciona la opción correcta', '¿Cuál es esta nota? 2', 'assets/images/logo.png', 0);
-
-
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Sol', '', 1, 1);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Do', '', 0, 1);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Mi', '', 0, 1);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La', '', 0, 1);
-
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Sol2', 'assets/images/imagenesLecciones/trombon.png', 1, 2);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Do2', 'assets/images/imagenesLecciones/trombon.png', 0, 2);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Mi2', 'assets/images/imagenesLecciones/trombon.png', 0, 2);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La2', 'assets/images/imagenesLecciones/trombon.png', 0, 2);
-
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Sol2', '', 1, 3);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Do2', '', 0, 3);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Mi2', '', 0, 3);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La2', '', 0, 3);
-
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Sol2', '', 1, 4);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Do2', '', 0, 4);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Mi2', '', 0, 4);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La2', '', 0, 4);
-
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Sol2', '', 1, 5);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Do2', '', 0, 5);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Mi2', '', 0, 5);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La2', '', 0, 5);
-
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Sol2', '', 1, 6);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Do2', '', 0, 6);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Mi2', '', 0, 6);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La2', '', 0, 6);
-
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Sol2', '', 1, 7);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Do2', '', 0, 7);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Mi2', '', 0, 7);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La2', '', 0, 7);
-
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Sol2', '', 1, 8);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Do2', '', 0, 8);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Mi2', '', 0, 8);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La2', '', 0, 8);
-
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Sol2', '', 1, 9);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Do2', '', 0, 9);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Mi2', '', 0, 9);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La2', '', 0, 9);
-
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Sol10', '', 1, 10);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Do10', '', 0, 10);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('Mi10', '', 0, 10);
-INSERT or IGNORE INTO respuestasSeleccion (valorRespuesta, recursoMultimedia, esCorrecto, idEjercicio) VALUES ('La10', '', 0, 10);
-
+INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (1, 'Selecciona la opción correcta', '¿Cuál es esta nota? 1', 'assets/images/logo.png', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (1, 'Sol', '', 1);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (1, 'Do', '', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (1, 'Mi', '', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (1, 'La', '', 0);
 
 INSERT or IGNORE INTO ejerciciosParejas (idEjercicio, tipoPregunta, enunciado) VALUES (2, 'Selecciona las parejas', 'Aaaaaaa');
-INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2) VALUES (1, 'La', 'Do');
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (2, 'La', 'Do', 1, 4);
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (2, 'Do', 'Mi', 4, 2);
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (2, 'Re', 'Re', 3, 3);
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (2, 'Mi', 'La', 2, 1);
+
+INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (3, 'Selecciona la opción correcta', '¿Cuál es esta nota? 1', 'assets/images/logo.png', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (3, 'Sol', '', 1);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (3, 'Do', '', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (3, 'Mi', '', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (3, 'La', '', 0);
+
+INSERT or IGNORE INTO ejerciciosParejas (idEjercicio, tipoPregunta, enunciado) VALUES (4, 'Selecciona las parejas', 'Aaaaaaa');
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (4, 'La', 'Do', 1, 4);
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (4, 'Do', 'Mi', 4, 2);
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (4, 'Re', 'Re', 3, 3);
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (4, 'Mi', 'La', 2, 1);

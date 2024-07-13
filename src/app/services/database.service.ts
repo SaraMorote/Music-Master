@@ -25,12 +25,23 @@ export interface Lecciones {
 export interface Ejercicios {
   idEjercicio: number,
   nombre: string,
-  idLeccion: number,
+  idLeccion: number
+}
+
+export interface EjerciciosSeleccion {
+  idEjercicio: number,
   tipoPregunta: string,
   enunciado: string,
   recursoMultimedia: string,
   tipoRecurso: number
 }
+
+export interface EjerciciosParejas {
+  idEjercicio: number,
+  tipoPregunta: string,
+  enunciado: string,
+}
+
 
 export interface RespuestasSeleccion {
   idRespuesta: number,
@@ -44,7 +55,9 @@ export interface RespuestasParejas {
   idRespuesta: number,
   idEjercicio: number,
   valorRespuesta1: string,
-  valorRespuesta2: string
+  valorRespuesta2: string,
+  esCorrecto1: number,
+  esCorrecto2: number
 }
 
 @Injectable({
@@ -53,11 +66,11 @@ export interface RespuestasParejas {
 export class DatabaseService {
   private database!: SQLiteObject;
   private dbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  
+
   //declaracion tablas bbdd
   cursos: Cursos[] = [];
-  
-  /* lecciones: Lecciones[] = []; */ 
+
+  /* lecciones: Lecciones[] = []; */
   /* ejercicios: EjerciciosSeleccion[] = []; */
   /* lecciones = new BehaviorSubject<Lecciones[]>([]); */
 
@@ -161,13 +174,13 @@ export class DatabaseService {
       }
 
       return lecciones
-  
+
       });
    }
-    
+
    getEjercicios(): Promise<Ejercicios[]> {
-    let query = 'SELECT * FROM ejercicios LEFT JOIN ejerciciosSeleccion ON ejercicios.idEjercicio = ejerciciosSeleccion.idEjercicio LEFT JOIN ejerciciosParejas ON ejercicios.idEjercicio = ejerciciosParejas.idEjercicio';
-    
+    let query = 'SELECT * FROM ejercicios';
+
     return this.database.executeSql(query, []).then((data: any) => {
 
       let ejercicios: Ejercicios[] = [];
@@ -178,6 +191,26 @@ export class DatabaseService {
             idEjercicio: data.rows.item(i).idEjercicio,
             nombre: data.rows.item(i).nombre,
             idLeccion: data.rows.item(i).idLeccion,
+          });
+        }
+      }
+
+     return ejercicios
+
+      });
+   }
+
+   getEjerciciosSeleccion(idEjercicio: number): Promise<EjerciciosSeleccion[]> {
+    let query = 'SELECT * FROM ejerciciosSeleccion WHERE idEjercicio = ?';
+
+    return this.database.executeSql(query, [idEjercicio]).then((data: any) => {
+
+      let ejercicios: EjerciciosSeleccion[] = [];
+
+      if(data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          ejercicios.push({
+            idEjercicio: data.rows.item(i).idEjercicio,
             tipoPregunta: data.rows.item(i).tipoPregunta,
             enunciado: data.rows.item(i).enunciado,
             recursoMultimedia: data.rows.item(i).recursoMultimedia,
@@ -187,7 +220,29 @@ export class DatabaseService {
       }
 
      return ejercicios
-  
+
+      });
+   }
+
+   getEjerciciosParejas(idEjercicio: number): Promise<EjerciciosParejas[]> {
+    let query = 'SELECT * FROM ejerciciosParejas WHERE idEjercicio = ?';
+
+    return this.database.executeSql(query, [idEjercicio]).then((data: any) => {
+
+      let ejercicios: EjerciciosParejas[] = [];
+
+      if(data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          ejercicios.push({
+            idEjercicio: data.rows.item(i).idEjercicio,
+            tipoPregunta: data.rows.item(i).tipoPregunta,
+            enunciado: data.rows.item(i).enunciado
+          });
+        }
+      }
+
+     return ejercicios
+
       });
    }
 
@@ -228,6 +283,8 @@ export class DatabaseService {
             idRespuesta: data.rows.item(i).idRespuesta,
             valorRespuesta1: data.rows.item(i).valorRespuesta1,
             valorRespuesta2: data.rows.item(i).valorRespuesta2,
+            esCorrecto1: data.rows.item(i).esCorrecto1,
+            esCorrecto2: data.rows.item(i).esCorrecto2,
             idEjercicio: data.rows.item(i).idEjercicio
           });
         }
