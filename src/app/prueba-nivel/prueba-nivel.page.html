@@ -11,31 +11,61 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item *ngIf="ejercicios.length !== 0" lines="none">
-    <section>
-      <p> {{ ejercicios[numEjercicio].tipoPregunta}} </p>
-      <p> {{ ejercicios[numEjercicio].enunciado}} </p>
-      <img [src]="ejercicios[numEjercicio].recursoMultimedia">
-    </section>
-  </ion-item>  
-
-  <ion-list>
-    <ion-radio-group (ionChange)="guardarSeleccion($event)">
-      <ion-item *ngFor="let respuesta of respuestas" lines="none">
-
-        <ion-radio *ngIf="respuesta.imagen === 0" [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta }}</ion-radio>
-
-        <div *ngIf="respuesta.imagen === 1">
-          <ion-label>
-            <img [ngClass]="{'radio-image-selected': respuesta.idRespuesta === opcionSeleccionada, 'radio-image': respuesta.idRespuesta !== opcionSeleccionada}" [src]="respuesta.recursoMultimedia" alt="img" class="radio-image">
-          </ion-label>
-          <ion-radio slot="start" [value]="respuesta.idRespuesta" class="hidden-radio"></ion-radio>
-        </div>
-      </ion-item>
-    </ion-radio-group>
-  </ion-list>
+  <div *ngIf="ejercicios.length !== 0">
+    <ion-item lines="none">
+      <section>
+        <p> {{ ejercicios[numEjercicio].tipoPregunta}} </p>
+        <p> {{ ejercicios[numEjercicio].enunciado}} </p>
+        <img *ngIf="ejercicios[numEjercicio].nombre === 'Seleccion'" [src]="ejercicios[numEjercicio].recursoMultimedia">
+      </section>
+    </ion-item>  
+  
+    <ion-list *ngIf="ejercicios[numEjercicio].nombre === 'Seleccion'">
+      <ion-radio-group (ionChange)="guardarSeleccion($event)">
+        <ion-item *ngFor="let respuesta of respuestasSeleccion" lines="none">
+  
+          <ion-radio *ngIf="ejercicios[numEjercicio].tipoRecurso === 0" [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta }}</ion-radio>
+  
+          <div *ngIf="ejercicios[numEjercicio].tipoRecurso === 1">
+            <ion-label>
+              <img [ngClass]="{'radio-image-selected': respuesta.idRespuesta === opcionSeleccionada, 'radio-image': respuesta.idRespuesta !== opcionSeleccionada}" [src]="respuesta.recursoMultimedia" alt="img" class="radio-image">
+            </ion-label>
+            <ion-radio slot="start" [value]="respuesta.idRespuesta" class="hidden-radio"></ion-radio>
+          </div>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  
+    <ion-grid *ngIf="ejercicios[numEjercicio].nombre === 'Parejas'">
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-radio-group (ionChange)="guardarSeleccion($event)">
+              <ion-item *ngFor="let respuesta of respuestasParejas" lines="none">
+        
+                <ion-radio [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta1 }}</ion-radio>
+        
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </ion-col>
+  
+        <ion-col>
+          <ion-list>
+            <ion-radio-group (ionChange)="guardarSeleccion($event)">
+              <ion-item *ngFor="let respuesta of respuestasParejas" lines="none">
+        
+                <ion-radio [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta2 }}</ion-radio>
+        
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>  
+  </div>
 
   <div class="centrarBoton">
-    <ion-button (click)="nextEjercicio()" class="elongated-button">Continuar</ion-button>
+    <ion-button class="elongated-button">Continuar</ion-button> <!-- (click)="nextEjercicio()" -->
   </div>
 </ion-content>

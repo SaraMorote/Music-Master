@@ -22,22 +22,29 @@ export interface Lecciones {
   nombre: string
 }
 
-export interface EjerciciosSeleccion {
+export interface Ejercicios {
   idEjercicio: number,
+  nombre: string,
+  idLeccion: number,
   tipoPregunta: string,
   enunciado: string,
   recursoMultimedia: string,
-  idLeccion: number
+  tipoRecurso: number
 }
 
-export interface Respuestas {
+export interface RespuestasSeleccion {
   idRespuesta: number,
   idEjercicio: number,
   recursoMultimedia: string,
   valorRespuesta: string,
-  imagen: number,
-  audio: number,
   esCorrecto: number
+}
+
+export interface RespuestasParejas {
+  idRespuesta: number,
+  idEjercicio: number,
+  valorRespuesta1: string,
+  valorRespuesta2: string
 }
 
 @Injectable({
@@ -158,21 +165,23 @@ export class DatabaseService {
       });
    }
     
-   getEjercicios(): Promise<EjerciciosSeleccion[]> {
-    let query = 'SELECT * FROM ejerciciosSeleccion';
-
+   getEjercicios(): Promise<Ejercicios[]> {
+    let query = 'SELECT * FROM ejercicios LEFT JOIN ejerciciosSeleccion ON ejercicios.idEjercicio = ejerciciosSeleccion.idEjercicio LEFT JOIN ejerciciosParejas ON ejercicios.idEjercicio = ejerciciosParejas.idEjercicio';
+    
     return this.database.executeSql(query, []).then((data: any) => {
 
-      let ejercicios: EjerciciosSeleccion[] = [];
+      let ejercicios: Ejercicios[] = [];
 
       if(data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
           ejercicios.push({
             idEjercicio: data.rows.item(i).idEjercicio,
+            nombre: data.rows.item(i).nombre,
+            idLeccion: data.rows.item(i).idLeccion,
             tipoPregunta: data.rows.item(i).tipoPregunta,
             enunciado: data.rows.item(i).enunciado,
             recursoMultimedia: data.rows.item(i).recursoMultimedia,
-            idLeccion: data.rows.item(i).idLeccion
+            tipoRecurso: data.rows.item(i).tipoRecurso
           });
         }
       }
@@ -182,22 +191,43 @@ export class DatabaseService {
       });
    }
 
-   getRespuestasByEjercicio(idEjercicio: number){
-    let query = 'SELECT * FROM respuestas where idEjercicio = ?';
+   getRespuestasSeleccionByEjercicio(idEjercicio: number){
+    let query = 'SELECT * FROM respuestasSeleccion where idEjercicio = ?';
 
     return this.database.executeSql(query, [idEjercicio]).then((data: any) => {
 
-      let respuestas: Respuestas[] = [];
+      let respuestas: RespuestasSeleccion[] = [];
 
       if(data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
           respuestas.push({
             idRespuesta: data.rows.item(i).idRespuesta,
-            audio: data.rows.item(i).audio,
-            imagen: data.rows.item(i).imagen,
             esCorrecto: data.rows.item(i).esCorrecto,
             valorRespuesta: data.rows.item(i).valorRespuesta,
             recursoMultimedia: data.rows.item(i).recursoMultimedia,
+            idEjercicio: data.rows.item(i).idEjercicio
+          });
+        }
+      }
+
+      return respuestas;
+
+    });
+  }
+
+  getRespuestasParejasByEjercicio(idEjercicio: number){
+    let query = 'SELECT * FROM respuestasParejas where idEjercicio = ?';
+
+    return this.database.executeSql(query, [idEjercicio]).then((data: any) => {
+
+      let respuestas: RespuestasParejas[] = [];
+
+      if(data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          respuestas.push({
+            idRespuesta: data.rows.item(i).idRespuesta,
+            valorRespuesta1: data.rows.item(i).valorRespuesta1,
+            valorRespuesta2: data.rows.item(i).valorRespuesta2,
             idEjercicio: data.rows.item(i).idEjercicio
           });
         }

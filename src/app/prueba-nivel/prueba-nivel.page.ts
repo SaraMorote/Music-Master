@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService, EjerciciosSeleccion, Respuestas } from '../services/database.service';
+import { DatabaseService, Ejercicios, RespuestasSeleccion, RespuestasParejas } from '../services/database.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
 })
 export class PruebaNivelPage implements OnInit {
 
-  ejercicios: EjerciciosSeleccion[] = [];
+  ejercicios: Ejercicios[] = [];
   numEjercicio: number = 0;
-  respuestas: Respuestas[] = [];
+  respuestasSeleccion: RespuestasSeleccion[] = [];
+  respuestasParejas: RespuestasParejas[] = [];
 
   opcionSeleccionada: number = 0;
   numAciertos: number = 0;
@@ -23,7 +24,7 @@ export class PruebaNivelPage implements OnInit {
       if (ready) {
         this.db.getEjercicios().then(ejercicios => {
           this.ejercicios = ejercicios;
-          this.getRespuestaByEjercicio(this.ejercicios[this.numEjercicio].idEjercicio);
+          //this.getRespuestaByEjercicio(this.ejercicios[this.numEjercicio].idEjercicio);
           console.log(ejercicios)
         });
       }
@@ -32,14 +33,25 @@ export class PruebaNivelPage implements OnInit {
   
   getRespuestaByEjercicio(idEjercicio: number){
 
-    this.db.getRespuestasByEjercicio(idEjercicio)
+    if(this.ejercicios[this.numEjercicio].nombre == "Seleccion"){
+      this.db.getRespuestasSeleccionByEjercicio(idEjercicio)
       .then(respuestas => {
-        this.respuestas = respuestas;
+        this.respuestasSeleccion = respuestas;
         console.log(respuestas);
       })
+    }
+    else {
+      this.db.getRespuestasParejasByEjercicio(idEjercicio)
+      .then(respuestas => {
+        this.respuestasParejas = respuestas;
+        console.log(respuestas);
+      })
+    }
+
+    
   }
 
-  nextEjercicio() {
+  /* nextEjercicio() {
     // Comprobar si esta bien
     let resp = this.respuestas.find( (respuesta: Respuestas) => respuesta.idRespuesta === this.opcionSeleccionada);
 
@@ -85,7 +97,7 @@ export class PruebaNivelPage implements OnInit {
 
     this.getRespuestaByEjercicio(this.ejercicios[this.numEjercicio].idEjercicio);
   }
-
+ */
   guardarSeleccion(event: any){
     this.opcionSeleccionada = event.target.value;
   }
