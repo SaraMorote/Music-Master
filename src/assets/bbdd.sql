@@ -29,8 +29,6 @@ CREATE TABLE IF NOT EXISTS ejerciciosSeleccion (
 	FOREIGN KEY(idLeccion) REFERENCES lecciones(idLeccion)
 );
 
-/* EJERCICIOS COLUMNAS */
-
 /* RESPUESTAS */
 CREATE TABLE IF NOT EXISTS respuestas (
 	idRespuesta INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -42,6 +40,10 @@ CREATE TABLE IF NOT EXISTS respuestas (
 	esCorrecto INTEGER, /* 0 no tiene foto - 1 tiene foto */
 	FOREIGN KEY(idEjercicio) REFERENCES ejerciciosSeleccion(idEjercicio)
 );
+
+/* EJERCICIOS COLUMNAS */
+
+
 
 /* APUNTES */
 

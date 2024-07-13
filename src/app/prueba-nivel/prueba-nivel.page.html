@@ -11,10 +11,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item *ngIf="ejercicios.length != 0" lines="none">
+  <ion-item *ngIf="ejercicios.length !== 0" lines="none">
     <section>
       <p> {{ ejercicios[numEjercicio].tipoPregunta}} </p>
       <p> {{ ejercicios[numEjercicio].enunciado}} </p>
+      <img [src]="ejercicios[numEjercicio].recursoMultimedia">
     </section>
   </ion-item>  
 
