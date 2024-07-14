@@ -144,7 +144,7 @@ export class DatabaseService {
     });
    }
 
-   updateCurso(idCurso: number, data: number){
+   updateCurso(data: number, idCurso: number){
     let query = 'UPDATE cursos SET seleccionado = ? where idCurso = ?';
 
     return this.database.executeSql(query, [data, idCurso]).then((data: any) => {
