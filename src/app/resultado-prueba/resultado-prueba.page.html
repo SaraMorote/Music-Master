@@ -1,13 +1,19 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>resultadoPrueba</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">resultadoPrueba</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h4 class="textoBienvenida">{{ numAciertos}}/10 <b>aciertos</b></h4>
+  
+  <div *ngIf="curso" class="centrarTexto">
+    <img  [src]="curso.imagen" class="bienvenida">
+  </div>
+
+  <p class="textoJustificado">Este es el nivel que creemos que se ajusta a ti, pero eso no impide que puedas navegar por los demás cursos. ¿Estás listo?</p>
+
+  <div class="centrarBoton">
+    <ion-button [routerLink]="['/tabs/inicio', idCurso]" class="elongated-button">Empezar</ion-button>
+  </div>
 </ion-content>

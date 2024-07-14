@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: () => import('./prueba-nivel/prueba-nivel.module').then( m => m.PruebaNivelPageModule)
   },
   {
-    path: 'resultado-prueba',
+    path: 'resultado-prueba/:numAciertos/:idCurso',
     loadChildren: () => import('./resultado-prueba/resultado-prueba.module').then( m => m.ResultadoPruebaPageModule)
   }
 
