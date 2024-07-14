@@ -35,7 +35,6 @@ export class PruebaNivelPage implements OnInit {
 
 
         this.getEjercicioByNombre();
-
       }
     })
   }
@@ -66,7 +65,7 @@ export class PruebaNivelPage implements OnInit {
 
   }
 
-  nextEjercicio() {
+   async nextEjercicio() {
 
     //Que tipo de ejercicio es
 
@@ -97,26 +96,32 @@ export class PruebaNivelPage implements OnInit {
     if(this.numEjercicio >= this.ejercicios.length) {
       //Calcular curso
       if(this.numAciertos <= 2){
+        await this.db.updateCurso(1, 1);
         this.router.navigateByUrl('/tabs/inicio/1');
         return
       }
       else if(this.numAciertos >2 && this.numAciertos <= 4) {
+        await this.db.updateCurso(1, 2);
         this.router.navigateByUrl('/tabs/inicio/2');
         return
       }
       else if(this.numAciertos >4 && this.numAciertos <= 6) {
+        await this.db.updateCurso(1, 3);
         this.router.navigateByUrl('/tabs/inicio/3');
         return
       }
       else if(this.numAciertos >6 && this.numAciertos <= 8) {
+        await this.db.updateCurso(1, 4);
         this.router.navigateByUrl('/tabs/inicio/4');
         return
       }
       else if(this.numAciertos == 9) {
+        await this.db.updateCurso(1, 5);
         this.router.navigateByUrl('/tabs/inicio/5');
         return
       }
       else if(this.numAciertos == 10) {
+        await this.db.updateCurso(1, 6);
         this.router.navigateByUrl('/tabs/inicio/6');
         return
       }

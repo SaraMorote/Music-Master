@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS respuestasParejas (
 INSERT or IGNORE INTO cursos VALUES (1, '1º Enseñanzas Elementales', 'assets/images/imagenesCursos/icono 1º ee-ee.png', 0, 0);
 INSERT or IGNORE INTO cursos VALUES (2, '2º Enseñanzas Elementales', 'assets/images/imagenesCursos/icono 2º ee-ee.png', 0, 0);
 INSERT or IGNORE INTO cursos VALUES (3, '3º Enseñanzas Elementales', 'assets/images/imagenesCursos/icono 3º ee-ee.png', 0, 0); 
-INSERT or IGNORE INTO cursos VALUES (4, '4º Enseñanzas Elementales', 'assets/images/imagenesCursos/icono 4º ee-ee.png', 0, 1);
+INSERT or IGNORE INTO cursos VALUES (4, '4º Enseñanzas Elementales', 'assets/images/imagenesCursos/icono 4º ee-ee.png', 0, 0);
 INSERT or IGNORE INTO cursos VALUES (5, '1º Enseñanzas Profesionales', 'assets/images/imagenesCursos/icono 1º ee-pp.png', 0, 0);
 INSERT or IGNORE INTO cursos VALUES (6, '2º Enseñanzas Profesionales', 'assets/images/imagenesCursos/icono 2º ee-pp.png', 0, 0);
 
@@ -211,14 +211,14 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 /* TABLA DE EJERCICIOS - HABRÁ 10 EN TOTAL */
 INSERT or IGNORE INTO ejercicios VALUES (1, "Seleccion", 1);
 INSERT or IGNORE INTO ejercicios VALUES (2, "Seleccion", 1);
-INSERT or IGNORE INTO ejercicios VALUES (3, "Parejas", 1);
+/* INSERT or IGNORE INTO ejercicios VALUES (3, "Parejas", 1);
 INSERT or IGNORE INTO ejercicios VALUES (4, "Seleccion", 1);
 INSERT or IGNORE INTO ejercicios VALUES (5, "Parejas", 1);
 INSERT or IGNORE INTO ejercicios VALUES (6, "Seleccion", 1);
 INSERT or IGNORE INTO ejercicios VALUES (7, "Parejas", 1);
 INSERT or IGNORE INTO ejercicios VALUES (8, "Seleccion", 1);
 INSERT or IGNORE INTO ejercicios VALUES (9, "Parejas", 1);
-INSERT or IGNORE INTO ejercicios VALUES (10, "Seleccion", 1);
+INSERT or IGNORE INTO ejercicios VALUES (10, "Seleccion", 1); */
 
 /* EJERCICIO1 */
 INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (1, 'Selecciona la opción correcta', '¿Cuál es esta nota? 1', 'assets/images/ejemplo.png', 0);

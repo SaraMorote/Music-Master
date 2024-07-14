@@ -18,7 +18,7 @@
           <img [src]="curso.imagen" alt="Imagen del curso" class="icon-left">
         </div>
         <div class="right-column">
-          <ion-button [ngClass]="{'disabled': curso.seleccionado === 1}" class="normal-button" size="small" size="small" [routerLink]="['/tabs/inicio', curso.idCurso]">Seleccionar</ion-button>
+          <ion-button [ngClass]="{'disabled': curso.seleccionado === 1}" class="normal-button" size="small" size="small" (click)="cambiarCurso(curso.idCurso)">Seleccionar</ion-button>
           <ion-progress-bar [value]="curso.progreso/100" class="progress-bar" color="tertiary"></ion-progress-bar>
         </div>
       </section>

@@ -97,10 +97,6 @@ export class DatabaseService {
       const sql = await lastValueFrom(this.http.get('assets/bbdd.sql', { responseType: 'text'}));
       await this.sqlitePorter.importSqlToDb(this.database, sql);
 
-      await this.loadCursos();
-      // this.loadLecciones();
-      // this.loadEjercicios();
-
       this.dbReady.next(true);
 
       console.log("LISTO");
@@ -116,10 +112,6 @@ export class DatabaseService {
    }
 
    getCursos() {
-    return this.cursos;
-   }
-
-   loadCursos() {
     return this.database.executeSql('SELECT * FROM cursos', []).then(data => {
       let cursos: Cursos[] = [];
 
@@ -134,7 +126,7 @@ export class DatabaseService {
           });
         }
       }
-      this.cursos = cursos;
+      return cursos;
     });
    }
 
@@ -152,10 +144,20 @@ export class DatabaseService {
     });
    }
 
+   updateCurso(idCurso: number, data: number){
+    let query = 'UPDATE cursos SET seleccionado = ? where idCurso = ?';
+
+    return this.database.executeSql(query, [data, idCurso]).then((data: any) => {
+      console.log('estamos aqui');
+      console.log(data);
+    });
+  }
+
    getLeccionByCurso(idCurso: number): Promise<Lecciones[]> {
     let query = 'SELECT * FROM lecciones  where curso = ?';
 
     return this.database.executeSql(query, [idCurso]).then((data: any) => {
+      
 
       let lecciones: Lecciones[] = [];
 
