@@ -11,16 +11,19 @@
     </ion-toolbar>
   </ion-header>
 
-  <div *ngIf="ejercicios.length !== 0">
+  <div *ngIf="ejercicios.length !== 0" class="contenidoPruebaNivel">
 
     <!-- Ejercicios Seleccion -->
     <div *ngIf="ejercicios[numEjercicio].nombre==='Seleccion' && ejercicioSeleccion.length !== 0">
 
-      <ion-item lines="none">
+      <ion-item lines="none"> 
         <section>
-          <p> {{ ejercicioSeleccion[0].tipoPregunta}} </p>
+          <p><b> {{ ejercicioSeleccion[0].tipoPregunta}} </b></p>
           <p> {{ ejercicioSeleccion[0].enunciado}} </p>
-          <img [src]="ejercicioSeleccion[0].recursoMultimedia">
+          
+          <div class="imagenCentrada">
+            <img class="recurso" [src]="ejercicioSeleccion[0].recursoMultimedia">    
+          </div>
         </section>
       </ion-item>
 
