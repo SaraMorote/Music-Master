@@ -206,10 +206,10 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 /* PRUEBA DE NIVEL */
 /* TABLA DE EJERCICIOS - HABRÁ 10 EN TOTAL */
 INSERT or IGNORE INTO ejercicios VALUES (1, "Seleccion", 0);
-/* INSERT or IGNORE INTO ejercicios VALUES (2, "Seleccion", 1);
-INSERT or IGNORE INTO ejercicios VALUES (3, "Parejas", 1); */
-/* INSERT or IGNORE INTO ejercicios VALUES (4, "Seleccion", 1);
-INSERT or IGNORE INTO ejercicios VALUES (5, "Parejas", 1);
+INSERT or IGNORE INTO ejercicios VALUES (2, "Seleccion", 1);
+INSERT or IGNORE INTO ejercicios VALUES (3, "Parejas", 1);
+INSERT or IGNORE INTO ejercicios VALUES (4, "Seleccion", 1);
+/* INSERT or IGNORE INTO ejercicios VALUES (5, "Parejas", 1);
 INSERT or IGNORE INTO ejercicios VALUES (6, "Seleccion", 1);
 INSERT or IGNORE INTO ejercicios VALUES (7, "Parejas", 1);
 INSERT or IGNORE INTO ejercicios VALUES (8, "Seleccion", 1);
@@ -238,7 +238,7 @@ INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorResp
 INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (3, 'Mi', 'La', 2, 1);
 
 /* EJERCICIO4 */
-INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (4, 'Selecciona la opción correcta', '¿Cuál es esta nota? 1', 'assets/images/logo.png', 0);
+INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (4, 'Selecciona la opción correcta', '¿Cuál es esta nota? 1', 'assets/images/ejemplo.png', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (4, 'Sol', '', 1);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (4, 'Do', '', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (4, 'Mi', '', 0);
