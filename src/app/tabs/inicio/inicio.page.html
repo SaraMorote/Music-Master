@@ -33,7 +33,7 @@
 
   <div class="structureLecciones">
 
-    <ion-item *ngFor="let leccion of lecciones" lines="none">
+    <ion-item *ngFor="let leccion of lecciones" lines="none" id="open-modal">
       <section class="estiloLecciones">
         <div class="firstColumn">
           <img [src]="leccion.imagen" alt="Imagen de la leccion" class="imagenLeccion">
@@ -45,6 +45,32 @@
           <p style="color: #FFFFFF; font-size: 12px;"><b>{{leccion.progreso}}%</b></p>
         </div>
       </section>
-    </ion-item> 
+    </ion-item>
+    
+    <ion-modal #modal trigger="open-modal">
+      <ng-template>
+        <ion-content>
+          <ion-toolbar>
+            <ion-title>Modal</ion-title>
+            <ion-buttons slot="end">
+              <ion-button  (click)="modal.dismiss()">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+          <ion-list>
+            <ion-item>
+              <ion-label>
+                <ion-button [routerLink]="['/apuntes']" (click)="modal.dismiss()">Apuntes</ion-button>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-button [routerLink]="['/ejercicios', leccion.idLeccion]" (click)="modal.dismiss()">Comenzar test</ion-button>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+    
   </div>
 </ion-content>

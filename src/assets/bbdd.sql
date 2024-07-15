@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS lecciones (
 CREATE TABLE IF NOT EXISTS ejercicios (
 	idEjercicio INTEGER PRIMARY KEY,
 	nombre TEXT, /* Será: Seleccion o Parejas */
-	idLeccion INTEGER,
+	idLeccion INTEGER, /* para la prueba de nivel será = 0, porque no pertenece a ninguna lección */
 	FOREIGN KEY(idLeccion) REFERENCES lecciones(idLeccion)
 );
 
@@ -80,6 +80,9 @@ INSERT or IGNORE INTO cursos VALUES (3, '3º Enseñanzas Elementales', 'assets/i
 INSERT or IGNORE INTO cursos VALUES (4, '4º Enseñanzas Elementales', 'assets/images/imagenesCursos/icono 4º ee-ee.png', 0, 0);
 INSERT or IGNORE INTO cursos VALUES (5, '1º Enseñanzas Profesionales', 'assets/images/imagenesCursos/icono 1º ee-pp.png', 0, 0);
 INSERT or IGNORE INTO cursos VALUES (6, '2º Enseñanzas Profesionales', 'assets/images/imagenesCursos/icono 2º ee-pp.png', 0, 0);
+
+/* PRUEBA DE NIVEL */
+INSERT or IGNORE INTO lecciones (numLeccion, imagen, nombre, progreso) VALUES (0, 'assets/images/imagenesLecciones/pentagrama.png', 'Prueba de nivel', 0);
 
 /* LECCIONES DE CADA CURSO */
 /* 1º ee.ee */
@@ -202,9 +205,9 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 
 /* PRUEBA DE NIVEL */
 /* TABLA DE EJERCICIOS - HABRÁ 10 EN TOTAL */
-INSERT or IGNORE INTO ejercicios VALUES (1, "Seleccion", 1);
-INSERT or IGNORE INTO ejercicios VALUES (2, "Seleccion", 1);
-INSERT or IGNORE INTO ejercicios VALUES (3, "Parejas", 1);
+INSERT or IGNORE INTO ejercicios VALUES (1, "Seleccion", 0);
+/* INSERT or IGNORE INTO ejercicios VALUES (2, "Seleccion", 1);
+INSERT or IGNORE INTO ejercicios VALUES (3, "Parejas", 1); */
 /* INSERT or IGNORE INTO ejercicios VALUES (4, "Seleccion", 1);
 INSERT or IGNORE INTO ejercicios VALUES (5, "Parejas", 1);
 INSERT or IGNORE INTO ejercicios VALUES (6, "Seleccion", 1);
@@ -282,3 +285,5 @@ INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoM
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (10, 'Do', '', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (10, 'Mi', '', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (10, 'La', '', 0);
+
+

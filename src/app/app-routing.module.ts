@@ -21,6 +21,14 @@ const routes: Routes = [
   {
     path: 'resultado-prueba/:numAciertos/:idCurso',
     loadChildren: () => import('./resultado-prueba/resultado-prueba.module').then( m => m.ResultadoPruebaPageModule)
+  },
+  {
+    path: 'apuntes',
+    loadChildren: () => import('./apuntes/apuntes.module').then( m => m.ApuntesPageModule)
+  },
+  {
+    path: 'ejercicios',
+    loadChildren: () => import('./ejercicios/ejercicios.module').then( m => m.EjerciciosPageModule)
   }
 
 ];
