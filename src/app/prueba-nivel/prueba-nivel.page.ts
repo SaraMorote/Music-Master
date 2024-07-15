@@ -92,9 +92,7 @@ export class PruebaNivelPage implements OnInit {
       console.log(this.numAciertos)
     }
 
-    this.numEjercicio++;
-
-    if(this.numEjercicio >= this.ejercicios.length) {
+    if((this.numEjercicio +1) >= this.ejercicios.length) {
       //Calcular curso
       if(this.numAciertos <= 2){
         await this.db.updateCurso(1, 1);
@@ -126,6 +124,9 @@ export class PruebaNivelPage implements OnInit {
         this.router.navigateByUrl(`/resultado-prueba/${this.numAciertos}/6`);
         return
       }
+    }
+    else {
+      this.numEjercicio++;
     }
 
     this.getEjercicioByNombre();

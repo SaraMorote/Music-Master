@@ -23,11 +23,11 @@ const routes: Routes = [
     loadChildren: () => import('./resultado-prueba/resultado-prueba.module').then( m => m.ResultadoPruebaPageModule)
   },
   {
-    path: 'apuntes',
+    path: 'apuntes/:idLeccion',
     loadChildren: () => import('./apuntes/apuntes.module').then( m => m.ApuntesPageModule)
   },
   {
-    path: 'ejercicios',
+    path: 'ejercicios/:idLeccion',
     loadChildren: () => import('./ejercicios/ejercicios.module').then( m => m.EjerciciosPageModule)
   }
 

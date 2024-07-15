@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IonModal } from '@ionic/angular';
 import { Cursos, DatabaseService, Lecciones } from 'src/app/services/database.service';
 
 @Component({
@@ -13,6 +14,9 @@ export class InicioPage implements OnInit {
   curso?: Cursos;
   lecciones?: Lecciones[];
 
+  @ViewChild('modal') modal?: IonModal;
+  idLeccion: number = 0;
+  
   constructor(
     private route: ActivatedRoute, private db: DatabaseService
   ) { }
@@ -31,5 +35,11 @@ export class InicioPage implements OnInit {
         });
       }
     })
+  }
+
+  mostrarModal(leccion: Lecciones) {
+    this.idLeccion = leccion.idLeccion;
+
+    this.modal?.present();
   }
 }
