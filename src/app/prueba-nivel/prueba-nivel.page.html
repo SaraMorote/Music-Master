@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-progress-bar [value]="numEjercicio/10" class="progress-bar" color="tertiary"></ion-progress-bar>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Prueba de nivel</ion-title>
@@ -60,7 +61,7 @@
           <ion-col>
             <ion-list>
               <ion-radio-group (ionChange)="guardarPareja1($event)">
-                <ion-item *ngFor="let respuesta of respuestasParejas" lines="none">
+                <ion-item *ngFor="let respuesta of respuestasParejas" lines="none" [ngClass]="{'hidden': respuesta.visible1 === false}">
 
                   <ion-radio [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta1 }}</ion-radio>
 
@@ -72,7 +73,7 @@
           <ion-col>
             <ion-list>
               <ion-radio-group (ionChange)="guardarPareja2($event)">
-                <ion-item *ngFor="let respuesta of respuestasParejas" lines="none">
+                <ion-item *ngFor="let respuesta of respuestasParejas" lines="none" [ngClass]="{'hidden': respuesta.visible2 === false}">
 
                   <ion-radio [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta2 }}</ion-radio>
 
@@ -86,7 +87,7 @@
     </div>
 
     <div *ngIf="ejercicios[numEjercicio].nombre==='Seleccion'" class="centrarBoton">
-      <ion-button (click)="nextEjercicio()" class="elongated-button">Continuar</ion-button>
+      <ion-button (click)="nextEjercicio()" [disabled]="opcionSeleccionada === 0" class="elongated-button">Continuar</ion-button>
     </div>
 
     <div *ngIf="ejercicios[numEjercicio].nombre==='Parejas'" class="centrarBoton">

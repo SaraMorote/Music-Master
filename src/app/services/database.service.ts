@@ -56,7 +56,9 @@ export interface RespuestasParejas {
   valorRespuesta1: string,
   valorRespuesta2: string,
   esCorrecto1: number,
-  esCorrecto2: number
+  esCorrecto2: number,
+  visible1: boolean,
+  visible2: boolean
 }
 
 @Injectable({
@@ -286,7 +288,9 @@ export class DatabaseService {
             valorRespuesta2: data.rows.item(i).valorRespuesta2,
             esCorrecto1: data.rows.item(i).esCorrecto1,
             esCorrecto2: data.rows.item(i).esCorrecto2,
-            idEjercicio: data.rows.item(i).idEjercicio
+            idEjercicio: data.rows.item(i).idEjercicio,
+            visible1: true,
+            visible2: true
           });
         }
       }

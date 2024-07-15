@@ -75,6 +75,7 @@ export class PruebaNivelPage implements OnInit {
 
       if(resp?.esCorrecto === 1){
         this.numAciertos++;
+        this.opcionSeleccionada = 0;
         // Mostrar modal verde
         console.log("BIEEEN")
         console.log(this.numAciertos)
@@ -152,6 +153,9 @@ export class PruebaNivelPage implements OnInit {
 
     if(resp1?.esCorrecto1 === resp2?.esCorrecto2) {
       this.numParejas++;
+
+      resp1!.visible1 = false;
+      resp2!.visible2 = false;
       console.log(this.numParejas)
       console.log('Pareja correcta')
 
