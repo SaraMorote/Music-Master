@@ -70,6 +70,19 @@ CREATE TABLE IF NOT EXISTS respuestasParejas (
 
 /* APUNTES */
 
+CREATE TABLE IF NOT EXISTS apuntes (
+	idApuntes INTEGER PRIMARY KEY AUTOINCREMENT,
+	idLeccion INTEGER,
+	imagenGeneral TEXT,
+	imagen1 TEXT,
+	imagen2 TEXT,
+	imagen3 TEXT,
+	textoImagen1 TEXT,
+	textoImagen2 TEXT,
+	texto1 TEXT,
+	texto2 TEXT,
+	FOREIGN KEY(idLeccion) REFERENCES lecciones(idLeccion)
+);
 
 
 /* INSERTS */
@@ -206,9 +219,9 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 /* PRUEBA DE NIVEL */
 /* TABLA DE EJERCICIOS - HABRÁ 10 EN TOTAL */
 INSERT or IGNORE INTO ejercicios VALUES (1, "Seleccion", 0);
-INSERT or IGNORE INTO ejercicios VALUES (2, "Seleccion", 1);
-INSERT or IGNORE INTO ejercicios VALUES (3, "Parejas", 1);
-INSERT or IGNORE INTO ejercicios VALUES (4, "Seleccion", 1);
+INSERT or IGNORE INTO ejercicios VALUES (2, "Seleccion", 0);
+INSERT or IGNORE INTO ejercicios VALUES (3, "Parejas", 0);
+INSERT or IGNORE INTO ejercicios VALUES (4, "Seleccion", 0);
 /* INSERT or IGNORE INTO ejercicios VALUES (5, "Parejas", 1);
 INSERT or IGNORE INTO ejercicios VALUES (6, "Seleccion", 1);
 INSERT or IGNORE INTO ejercicios VALUES (7, "Parejas", 1);
@@ -225,10 +238,10 @@ INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoM
 
 /* EJERCICIO2 */
 INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (2, 'Selecciona la opción correcta', '¿Cuál es esta nota? 2', 'assets/images/ejemplo.png', 1);
-INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (2, 'assets/images/ejemplo.png', '', 1);
-INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (2, 'assets/images/ejemplo nota do.png', '', 0);
-INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (2, 'assets/images/ejemplo nota re.png', '', 0);
-INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (2, 'assets/images/ejemplo nota la.png', '', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (2, '', 'assets/images/ejemplo.png', 1);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (2, '', 'assets/images/ejemplo nota do.png', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (2, '', 'assets/images/ejemplo nota re.png', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (2, '', 'assets/images/ejemplo nota la.png', 0);
 
 /* EJERCICIO3 */
 INSERT or IGNORE INTO ejerciciosParejas (idEjercicio, tipoPregunta, enunciado) VALUES (3, 'Relaciona las columnas', 'Busca las parejas de las columnas.');
@@ -287,3 +300,32 @@ INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoM
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (10, 'La', '', 0);
 
 
+
+
+/* CLAVE DE FA EJERCICIOS */
+
+INSERT or IGNORE INTO ejercicios VALUES (11, "Parejas", 31); 
+INSERT or IGNORE INTO ejercicios VALUES (12, "Seleccion", 31);
+
+/* EJERCICIO1 */
+INSERT or IGNORE INTO ejerciciosParejas (idEjercicio, tipoPregunta, enunciado) VALUES (11, 'Relaciona las columnas', 'Busca las parejas de las columnas.');
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (11, 'La', 'Do', 1, 4);
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (11, 'Do', 'Mi', 4, 2);
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (11, 'Re', 'Re', 3, 3);
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (11, 'Mi', 'La', 2, 1);
+
+/* EJERCICIO2 */
+INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (12, 'Selecciona la opción correcta', '¿Cuál es esta nota? 1', 'assets/images/logo.png', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (12, 'Sol', '', 1);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (12, 'Do', '', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (12, 'Mi', '', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (12, 'La', '', 0);
+
+
+
+/* APUNTES */
+
+INSERT or IGNORE INTO apuntes (idLeccion, imagenGeneral, imagen1, imagen2, imagen3 , textoImagen1, textoImagen2, texto1, texto2) 
+VALUES (31, "/assets/images/apuntes/clave-de-fa-en-cuarta.jpg", "/assets/images/apuntes/clave-de-fa-en-cuarta.jpg", "/assets/images/apuntes/clave-de-fa-en-cuarta.jpg", "/assets/images/apuntes/clave-de-fa-en-cuarta.jpg",
+"Líneas", "Espacios", "La clave de fa en cuarta línea indica que la nota FA  se escribe en la cuarta línea del pentagrama. Conociendo el nombre de esta nota, fácilmente conoceremos el de las notas que se colocan sobre las demás líneas y espacios del pentagrama.",
+"También la clave de fa en cuarta línea exige la utilización de líneas adicionales superiores para la práctica solfística, como puede verse en el siguiente ejemplo."); 

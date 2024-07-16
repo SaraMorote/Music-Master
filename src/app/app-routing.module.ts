@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'ejercicios/:idLeccion',
     loadChildren: () => import('./ejercicios/ejercicios.module').then( m => m.EjerciciosPageModule)
+  },
+  {
+    path: 'resultado-test/:idLeccion/:progreso',
+    loadChildren: () => import('./resultado-test/resultado-test.module').then( m => m.ResultadoTestPageModule)
   }
 
 ];

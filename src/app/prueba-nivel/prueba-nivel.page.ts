@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatabaseService, Ejercicios, RespuestasSeleccion, RespuestasParejas, EjerciciosSeleccion, EjerciciosParejas } from '../services/database.service';
 import { Router } from '@angular/router';
+import { IonModal, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-prueba-nivel',
@@ -9,9 +10,12 @@ import { Router } from '@angular/router';
 })
 export class PruebaNivelPage implements OnInit {
 
+  @ViewChild('modalAcierto') modalAcierto?: IonModal;
+  @ViewChild('modalError') modalError?: IonModal;
+
   ejercicios: Ejercicios[] = [];
-  ejercicioSeleccion: EjerciciosSeleccion[] = [];
-  ejercicioParejas: EjerciciosParejas[] = [];
+  ejercicioSeleccion?: EjerciciosSeleccion;
+  ejercicioParejas?: EjerciciosParejas;
 
   numEjercicio: number = 0;
   respuestasSeleccion: RespuestasSeleccion[] = [];
@@ -24,15 +28,16 @@ export class PruebaNivelPage implements OnInit {
   pareja2: number = 0;
   numParejas: number = 0;
 
-  constructor(private db: DatabaseService, private router: Router) { }
+  selectedValue: any;
+  selectedValue2: any;
+
+  constructor(private db: DatabaseService, private router: Router, private toastController: ToastController) { }
 
   ngOnInit() {
     this.db.getDatabaseState().subscribe(async ready => {
       if (ready) {
 
-        this.ejercicios = await this.db.getEjercicios();
-        console.log( this.ejercicios)
-
+        this.ejercicios = await this.db.getEjerciciosByLeccion(0);
 
         this.getEjercicioByNombre();
       }
@@ -42,11 +47,9 @@ export class PruebaNivelPage implements OnInit {
   async getEjercicioByNombre(){
     if( this.ejercicios[this.numEjercicio].nombre === 'Seleccion' ){
       this.ejercicioSeleccion = await this.db.getEjerciciosSeleccion(this.ejercicios[this.numEjercicio].idEjercicio);
-      console.log(this.ejercicioSeleccion)
     }
     else{
       this.ejercicioParejas = await this.db.getEjerciciosParejas(this.ejercicios[this.numEjercicio].idEjercicio);
-      console.log(this.ejercicioParejas);
     }
 
     this.getRespuestaByEjercicio(this.ejercicios[this.numEjercicio].idEjercicio);
@@ -56,11 +59,10 @@ export class PruebaNivelPage implements OnInit {
 
     if(this.ejercicios[this.numEjercicio].nombre == "Seleccion"){
       this.respuestasSeleccion = await this.db.getRespuestasSeleccionByEjercicio(idEjercicio)
-      console.log(this.respuestasSeleccion)
     }
     else {
       this.respuestasParejas = await this.db.getRespuestasParejasByEjercicio(idEjercicio)
-      console.log(this.respuestasParejas)
+
     }
 
   }
@@ -76,22 +78,24 @@ export class PruebaNivelPage implements OnInit {
       if(resp?.esCorrecto === 1){
         this.numAciertos++;
         this.opcionSeleccionada = 0;
-        // Mostrar modal verde
-        console.log("BIEEEN")
-        console.log(this.numAciertos)
+
+        this.modalAcierto?.present();
       }
       else{
         // Mostrar modal rojo
-        console.log("ERROR")
-        console.log(this.numAciertos)
+        this.modalError?.present();
       }
     }
     else {
       this.numAciertos++;
       this.numParejas = 0;
-      console.log(this.numAciertos)
+      this.confirm();
     }
 
+    
+  }
+
+  async confirm() {
     if((this.numEjercicio +1) >= this.ejercicios.length) {
       //Calcular curso
       if(this.numAciertos <= 2){
@@ -157,12 +161,39 @@ export class PruebaNivelPage implements OnInit {
 
       resp1!.visible1 = false;
       resp2!.visible2 = false;
-      console.log(this.numParejas)
-      console.log('Pareja correcta')
+
+      this.presentToastAcierto('bottom');
 
     }
     else {
-      console.log('Incorrecto')
+      this.deselectRadios();
+      this.presentToastError('bottom');
     }
   }
+
+  async presentToastAcierto(position: 'bottom') {
+    const toast = await this.toastController.create({
+      message: 'Correcto',
+      duration: 1500,
+      position: position,
+    });
+
+    await toast.present();
+  }
+
+  async presentToastError(position: 'bottom') {
+    const toast = await this.toastController.create({
+      message: 'Inténtalo de nuevo',
+      duration: 1500,
+      position: position,
+    });
+
+    await toast.present();
+  }
+
+  deselectRadios() {
+    this.selectedValue = null;
+    this.selectedValue2 = null;
+  }
+  
 }

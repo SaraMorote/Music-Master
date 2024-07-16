@@ -61,6 +61,19 @@ export interface RespuestasParejas {
   visible2: boolean
 }
 
+export interface Apuntes {
+  idApuntes: number,
+	idLeccion: number,
+	imagenGeneral: string,
+	imagen1: string,
+	imagen2: string,
+	imagen3: string,
+	textoImagen1: string,
+	textoImagen2: string,
+	texto1: string,
+	texto2: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -155,6 +168,22 @@ export class DatabaseService {
     });
   }
 
+  updateProgresoLeccion(data: number, idLeccion: number){
+    let query = 'UPDATE lecciones SET progreso = ? where idLeccion = ?';
+
+    return this.database.executeSql(query, [data, idLeccion]).then((data: any) => {
+      console.log(data);
+    });
+  }
+
+  updateProgresoCurso(data: number, idCurso: number){
+    let query = 'UPDATE cursos SET progreso = ? where idCurso = ?';
+
+    return this.database.executeSql(query, [data, idCurso]).then((data: any) => {
+      console.log(data);
+    });
+  }
+
    getLeccionByCurso(idCurso: number): Promise<Lecciones[]> {
     let query = 'SELECT * FROM lecciones  where curso = ?';
 
@@ -164,7 +193,7 @@ export class DatabaseService {
       let lecciones: Lecciones[] = [];
 
       if(data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
+        for (let i = 0; i < data.rows.length; i++) {
           lecciones.push({
             idLeccion: data.rows.item(i).idLeccion,
             numLeccion: data.rows.item(i).numLeccion,
@@ -181,6 +210,23 @@ export class DatabaseService {
       });
    }
 
+   getLeccionById(idLeccion: number): Promise<Lecciones> {
+    let query = 'SELECT * FROM lecciones  where idLeccion = ?';
+
+    return this.database.executeSql(query, [idLeccion]).then((data: any) => {
+
+      return {
+        idLeccion: data.rows.item(0).idLeccion,
+        numLeccion: data.rows.item(0).numLeccion,
+        curso: data.rows.item(0).curso,
+        imagen: data.rows.item(0).imagen,
+        progreso: data.rows.item(0).progreso,
+        nombre: data.rows.item(0).nombre
+      }
+
+      });
+   }
+
    getEjercicios(): Promise<Ejercicios[]> {
     let query = 'SELECT * FROM ejercicios';
 
@@ -189,7 +235,7 @@ export class DatabaseService {
       let ejercicios: Ejercicios[] = [];
 
       if(data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
+        for (let i = 0; i < data.rows.length; i++) {
           ejercicios.push({
             idEjercicio: data.rows.item(i).idEjercicio,
             nombre: data.rows.item(i).nombre,
@@ -203,7 +249,29 @@ export class DatabaseService {
       });
    }
 
-   getEjerciciosSeleccion(idEjercicio: number): Promise<EjerciciosSeleccion[]> {
+   getEjerciciosByLeccion(idLeccion: number): Promise<Ejercicios[]> {
+    let query = 'SELECT * FROM ejercicios WHERE idLeccion = ?';
+
+    return this.database.executeSql(query, [idLeccion]).then((data: any) => {
+
+      let ejercicios: Ejercicios[] = [];
+
+      if(data.rows.length > 0) {
+        for (let i = 0; i < data.rows.length; i++) {
+          ejercicios.push({
+            idEjercicio: data.rows.item(i).idEjercicio,
+            nombre: data.rows.item(i).nombre,
+            idLeccion: data.rows.item(i).idLeccion,
+          });
+        }
+      }
+
+     return ejercicios
+
+      });
+   }
+
+   getEjerciciosSeleccion(idEjercicio: number): Promise<EjerciciosSeleccion> {
     let query = 'SELECT * FROM ejerciciosSeleccion WHERE idEjercicio = ?';
 
     return this.database.executeSql(query, [idEjercicio]).then((data: any) => {
@@ -211,7 +279,7 @@ export class DatabaseService {
       let ejercicios: EjerciciosSeleccion[] = [];
 
       if(data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
+        for (let i = 0; i < data.rows.length; i++) {
           ejercicios.push({
             idEjercicio: data.rows.item(i).idEjercicio,
             tipoPregunta: data.rows.item(i).tipoPregunta,
@@ -222,12 +290,12 @@ export class DatabaseService {
         }
       }
 
-     return ejercicios
+     return ejercicios[0]
 
       });
    }
 
-   getEjerciciosParejas(idEjercicio: number): Promise<EjerciciosParejas[]> {
+   getEjerciciosParejas(idEjercicio: number): Promise<EjerciciosParejas> {
     let query = 'SELECT * FROM ejerciciosParejas WHERE idEjercicio = ?';
 
     return this.database.executeSql(query, [idEjercicio]).then((data: any) => {
@@ -235,7 +303,7 @@ export class DatabaseService {
       let ejercicios: EjerciciosParejas[] = [];
 
       if(data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
+        for (let i = 0; i < data.rows.length; i++) {
           ejercicios.push({
             idEjercicio: data.rows.item(i).idEjercicio,
             tipoPregunta: data.rows.item(i).tipoPregunta,
@@ -244,7 +312,7 @@ export class DatabaseService {
         }
       }
 
-     return ejercicios
+     return ejercicios[0]
 
       });
    }
@@ -257,7 +325,7 @@ export class DatabaseService {
       let respuestas: RespuestasSeleccion[] = [];
 
       if(data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
+        for (let i = 0; i < data.rows.length; i++) {
           respuestas.push({
             idRespuesta: data.rows.item(i).idRespuesta,
             esCorrecto: data.rows.item(i).esCorrecto,
@@ -281,7 +349,7 @@ export class DatabaseService {
       let respuestas: RespuestasParejas[] = [];
 
       if(data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
+        for (let i = 0; i < data.rows.length; i++) {
           respuestas.push({
             idRespuesta: data.rows.item(i).idRespuesta,
             valorRespuesta1: data.rows.item(i).valorRespuesta1,
@@ -300,4 +368,24 @@ export class DatabaseService {
     });
   }
 
+  getApuntesByLeccion(idLeccion: number): Promise<Apuntes> {
+    let query = 'SELECT * FROM apuntes  where idLeccion = ?';
+
+    return this.database.executeSql(query, [idLeccion]).then((data: any) => {
+
+      return {
+        idApuntes: data.rows.item(0).idApuntes,
+        idLeccion: data.rows.item(0).idLeccion,
+        imagenGeneral: data.rows.item(0).imagenGeneral,
+        imagen1: data.rows.item(0).imagen1,
+        imagen2: data.rows.item(0).imagen2,
+        imagen3: data.rows.item(0).imagen3,
+        textoImagen1: data.rows.item(0).textoImagen1,
+        textoImagen2: data.rows.item(0).textoImagen2,
+        texto1: data.rows.item(0).texto1,
+        texto2: data.rows.item(0).texto2
+      }
+
+      });
+   }
 }

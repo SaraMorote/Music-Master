@@ -1,0 +1,13 @@
+<ion-content [fullscreen]="true" *ngIf="leccion">
+  <h4 class="textoBienvenida">{{progreso}}%</h4>
+  
+  <!-- <div *ngIf="curso" class="centrarTexto">
+    <img  [src]="curso.imagen" class="bienvenida">
+  </div> -->
+
+    <h5>{{titulo}}</h5>
+    <p>{{texto}}</p>
+  <div class="centrarBoton">
+    <ion-button [routerLink]="['/tabs/inicio', leccion.curso]" class="elongated-button">Aceptar</ion-button>
+  </div>
+</ion-content>
