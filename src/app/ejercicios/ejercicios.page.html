@@ -1,6 +1,6 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>{{leccion?.nombre}}</ion-title>
+    <ion-title class="posicionTitulos">{{leccion?.nombre}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -60,7 +60,7 @@
         <ion-row>
           <ion-col>
             <ion-list>
-              <ion-radio-group (ionChange)="guardarPareja1($event)">
+              <ion-radio-group (ionChange)="guardarPareja1($event)" [(ngModel)]="selectedValue">
                 <ion-item *ngFor="let respuesta of respuestasParejas" lines="none" [ngClass]="{'hidden': respuesta.visible1 === false}">
 
                   <ion-radio [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta1 }}</ion-radio>
@@ -72,7 +72,7 @@
 
           <ion-col>
             <ion-list>
-              <ion-radio-group (ionChange)="guardarPareja2($event)">
+              <ion-radio-group (ionChange)="guardarPareja2($event)" [(ngModel)]="selectedValue2">
                 <ion-item *ngFor="let respuesta of respuestasParejas" lines="none" [ngClass]="{'hidden': respuesta.visible2 === false}">
 
                   <ion-radio [value]="respuesta.idRespuesta">{{ respuesta.valorRespuesta2 }}</ion-radio>
@@ -86,14 +86,32 @@
 
     </div>
 
-    <div *ngIf="ejercicios[numEjercicio].nombre==='Seleccion'" class="centrarBoton">
+    <div *ngIf="ejercicios[numEjercicio].nombre==='Seleccion'" class="centrarBoton" style="margin-top: 50px">
       <ion-button (click)="nextEjercicio()" [disabled]="opcionSeleccionada === 0" class="elongated-button">Continuar</ion-button>
     </div>
 
-    <div *ngIf="ejercicios[numEjercicio].nombre==='Parejas'" class="centrarBoton">
+    <div *ngIf="ejercicios[numEjercicio].nombre==='Parejas'" class="centrarBoton" style="margin-top: 100px">
       <ion-button (click)="nextEjercicio()" [ngClass]="{'disabled': numParejas !== 4}" class="elongated-button">Continuar</ion-button>
     </div>
   </div>
+
+  <ion-modal #modalAcierto [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ng-template>
+      <div style="background-color: #C8EAAD; text-align: center; padding: 50px;">
+        <h4 style="color: #6BBB2B; margin-bottom: 20px;"><ion-icon name="checkbox-outline"></ion-icon> Así se hace</h4>
+        <ion-button (click)="confirm(); modalAcierto.dismiss()" class="elongated-button">Continuar</ion-button>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal #modalError [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ng-template>
+      <div style="background-color: #F4B0B0; text-align: center; padding: 50px;">
+        <h4 style="color: #C52828; margin-bottom: 20px; "> <ion-icon name="alert-circle-outline"></ion-icon> Incorrecto</h4>
+        <ion-button (click)="confirm(); modalError.dismiss()" class="elongated-button">Continuar</ion-button>
+      </div>
+    </ng-template>
+  </ion-modal>
 
 
 </ion-content>

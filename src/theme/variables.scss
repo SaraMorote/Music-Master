@@ -46,13 +46,26 @@ ion-button {
     margin-top: 45px;
 }
 
+.centrarModalBoton {
+    text-align: center;
+}
+
 .posicionTitulos {
     margin-left: 20px;
-    margin-top: 45px;
+    margin-top: 60px;
 }
 
 .posicionTitulo2 {
     margin-left: 20px;
+}
+
+.posicionTitulosApuntes {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.posicionTitulosAtrás {
+    margin-top: 30px;
+    margin-left: 40px;
 }
 
 ion-tab-bar {
@@ -73,4 +86,20 @@ ion-progress-bar {
     align-items: center;
     height: 100%;
     text-align: center;
+}
+
+.toastAcierto {
+ --width: 180px;
+ --background: #C8EAAD;
+ margin-left: 100px;
+ --color: #48801b;
+ transform: translateY(130px) !important;
+}
+
+.toastError {
+--width: 180px;
+ --background: #F4B0B0;
+ margin-left: 100px;
+ --color: #C52828;
+ transform: translateY(130px) !important;
 }

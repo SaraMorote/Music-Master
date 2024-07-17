@@ -56,7 +56,7 @@
 
       <ion-item lines="none">
         <section>
-          <p> {{ ejercicioParejas.tipoPregunta}} </p>
+          <p><b>{{ ejercicioParejas.tipoPregunta}} </b></p>
           <p> {{ ejercicioParejas.enunciado}} </p>
         </section>
       </ion-item>
@@ -91,11 +91,11 @@
 
     </div>
 
-    <div *ngIf="ejercicios[numEjercicio].nombre==='Seleccion'" class="centrarBoton">
+    <div *ngIf="ejercicios[numEjercicio].nombre==='Seleccion'" class="centrarBoton" style="margin-top: 50px">
       <ion-button (click)="nextEjercicio()" [disabled]="opcionSeleccionada === 0" class="elongated-button">Continuar</ion-button>
     </div>
 
-    <div *ngIf="ejercicios[numEjercicio].nombre==='Parejas'" class="centrarBoton">
+    <div *ngIf="ejercicios[numEjercicio].nombre==='Parejas'" class="centrarBoton" style="margin-top: 100px">
       <ion-button (click)="nextEjercicio()" [ngClass]="{'disabled': numParejas !== 4}" class="elongated-button">Continuar</ion-button>
     </div>
   </div>
@@ -103,15 +103,19 @@
 
   <ion-modal #modalAcierto [initialBreakpoint]="1" [breakpoints]="[0, 1]">
     <ng-template>
-      <div class="block">Así se hace</div>
-      <ion-button (click)="confirm(); modalAcierto.dismiss()" class="elongated-button">Continuar</ion-button>
+      <div style="background-color: #C8EAAD; text-align: center; padding: 50px;">
+        <h4 style="color: #6BBB2B; margin-bottom: 20px;"><ion-icon name="checkbox-outline"></ion-icon> Así se hace</h4>
+        <ion-button (click)="confirm(); modalAcierto.dismiss()" class="elongated-button">Continuar</ion-button>
+      </div>
     </ng-template>
   </ion-modal>
 
   <ion-modal #modalError [initialBreakpoint]="1" [breakpoints]="[0, 1]">
     <ng-template>
-      <div class="block">Error</div>
-      <ion-button (click)="confirm(); modalError.dismiss()" class="elongated-button">Continuar</ion-button>
+      <div style="background-color: #F4B0B0; text-align: center; padding: 50px;">
+        <h4 style="color: #C52828; margin-bottom: 20px; "> <ion-icon name="alert-circle-outline"></ion-icon> Incorrecto</h4>
+        <ion-button (click)="confirm(); modalError.dismiss()" class="elongated-button">Continuar</ion-button>
+      </div>
     </ng-template>
   </ion-modal>
 

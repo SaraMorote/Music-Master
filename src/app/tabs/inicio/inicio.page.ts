@@ -11,6 +11,7 @@ import { Cursos, DatabaseService, Lecciones } from 'src/app/services/database.se
 export class InicioPage {
 
   idCurso: number = this.route.snapshot.params['idCurso'];
+  nombreLeccion: string = '';
   curso?: Cursos;
   lecciones: Lecciones[] = [];
 
@@ -51,6 +52,7 @@ export class InicioPage {
 
   mostrarModal(leccion: Lecciones) {
     this.idLeccion = leccion.idLeccion;
+    this.nombreLeccion = leccion.nombre;
 
     this.modal?.present();
   }

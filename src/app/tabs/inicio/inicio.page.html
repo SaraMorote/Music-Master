@@ -50,20 +50,20 @@
     <ion-modal #modal>
       <ng-template>
         <ion-content>
-          <ion-toolbar>
-            <ion-title>Modal</ion-title>
-            <ion-buttons slot="end">
-              <ion-button  (click)="modal.dismiss()">Close</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
           <ion-list>
-            <ion-item>
-              <ion-label>
+            <ion-item lines="none">
+              <ion-buttons slot="end">
+                <ion-button  (click)="modal.dismiss()" style="color: #49209B;">X</ion-button>
+              </ion-buttons>
+              <p><b>{{nombreLeccion}}</b></p>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label class="centrarModalBoton">
                 <ion-button [routerLink]="['/apuntes', idLeccion]" (click)="modal.dismiss()">Apuntes</ion-button>
               </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>
+            </ion-item >
+            <ion-item lines="none">
+              <ion-label class="centrarModalBoton">
                 <ion-button [routerLink]="['/ejercicios', idLeccion]" (click)="modal.dismiss()">Comenzar test</ion-button>
               </ion-label>
             </ion-item>
@@ -71,6 +71,5 @@
         </ion-content>
       </ng-template>
     </ion-modal>
-    
   </div>
 </ion-content>

@@ -1,7 +1,9 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-button [routerLink]="['/tabs/inicio',leccion?.curso]">AAA</ion-button>
-    <ion-title>{{leccion?.nombre}}</ion-title>
+    <ion-button class="posicionTitulosAtrás" [routerLink]="['/tabs/inicio',leccion?.curso]">
+      <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </ion-button>
+    <ion-title class="posicionTitulosApuntes">{{leccion?.nombre}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,30 +14,30 @@
     </ion-toolbar>
   </ion-header>
 
-  <div>
+  <div class="centrarApuntes">
     <ion-item>
       <section>
-        <div>
+        <div class="inline-container" style="margin-top: 30px;">
           <p>{{leccion.nombre}}</p>
-          <img src="assets/images/logo.png">
+          <img class="imgGeneral" [src]="apuntes.imagenGeneral">
         </div>
-        <div>
-          {{apuntes.texto1}}
+        <div class="fondo" style="margin-top: 10px">
+          <p class="textoJustificado">{{apuntes.texto1}}</p>
         </div>
-        <div>
-          <p>Líneas</p>
-          <img src="assets/images/logo.png">
+        <div class="inline-container" style="margin-top: 10px">
+          <p>{{apuntes.textoImagen1}}</p>
+          <img class="imagenes" [src]="apuntes.imagen1">
         </div>
-        <div>
-          <p>Espacios</p>
-          <img src="assets/images/logo.png">
+        <div class="inline-container" style="margin-top: 5px">
+          <p>{{apuntes.textoImagen2}}</p>
+          <img class="imagenes" [src]="apuntes.imagen2">
         </div>
-        <div>
-          <p>También la clave de fa en cuarta línea exige la utilización
-            de líneas adicionales superiores para la práctica solfística,
-            como puede verse en el siguiente ejemplo.</p>
-            <img src="assets/images/logo.png">
+        <div class="fondo" style="margin-top: 10px">
+          <p class="textoJustificado">{{apuntes.texto2}}</p>
         </div> 
+        <div style="margin-bottom: 30px; margin-top: 10px;">
+          <img [src]="apuntes.imagen3">
+        </div>
       </section>
     </ion-item>
     

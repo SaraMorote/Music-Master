@@ -172,20 +172,24 @@ export class PruebaNivelPage implements OnInit {
   }
 
   async presentToastAcierto(position: 'bottom') {
+    console.log('hola')
     const toast = await this.toastController.create({
       message: 'Correcto',
       duration: 1500,
       position: position,
+      cssClass: 'toastAcierto'
     });
 
     await toast.present();
   }
 
   async presentToastError(position: 'bottom') {
+    console.log('adios')
     const toast = await this.toastController.create({
       message: 'Inténtalo de nuevo',
       duration: 1500,
       position: position,
+      cssClass: 'toastError'
     });
 
     await toast.present();
