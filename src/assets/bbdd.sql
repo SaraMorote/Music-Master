@@ -306,9 +306,9 @@ INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoM
 
 INSERT or IGNORE INTO ejercicios VALUES (11, "Parejas", 31); 
 INSERT or IGNORE INTO ejercicios VALUES (12, "Seleccion", 31);
-/* INSERT or IGNORE INTO ejercicios VALUES (13, "Selección", 31); 
-INSERT or IGNORE INTO ejercicios VALUES (14, "Seleccion", 31);*/
-INSERT or IGNORE INTO ejercicios VALUES (13, "Selección", 31);  
+INSERT or IGNORE INTO ejercicios VALUES (13, "Seleccion", 31); 
+INSERT or IGNORE INTO ejercicios VALUES (14, "Seleccion", 31);
+INSERT or IGNORE INTO ejercicios VALUES (15, "Seleccion", 31);  
 
 /* EJERCICIO1 */
 INSERT or IGNORE INTO ejerciciosParejas (idEjercicio, tipoPregunta, enunciado) VALUES (11, 'Relaciona las columnas', 'Indica la posición que ocupan las siguientes notas en el pentagrama, estando en clave de Fa en 4ª línea');
@@ -325,25 +325,25 @@ INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoM
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (12, 'No afecta a la nota Fa', '', 0);
 
  /* EJERCICIO3 */
-/*INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (13, 'Selecciona la opción correcta', '¿Cuál es esta nota?', 'assets/images/nota do.png', 0);
+INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (13, 'Selecciona la opción correcta', '¿Cuál es esta nota?', 'assets/images/nota do.jpg', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, 'Re', '', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, 'Do', '', 1);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, 'Sol', '', 0);
-INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, 'Fa', '', 0);*/
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, 'Fa', '', 0);
 
 /* EJERCICIO4 */
-/*INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (14, 'Selecciona la opción correcta', '¿Se pueden utilizar líneas adicionales con la clave de Fa?', 'assets/images/logo.png', 0);
+INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (14, 'Selecciona la opción correcta', '¿Se pueden utilizar líneas adicionales con la clave de Fa?', 'assets/images/apuntes/clave-de-fa-en-cuarta.jpg', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (14, 'No, de ningún tipo', '', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (14, 'Sí, solo las de arriba', '', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (14, 'Sí, arriba y abajo', '', 1);
-INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (14, 'Sí, solo las notas de abajo', '', 0);*/
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (14, 'Sí, solo las notas de abajo', '', 0);
 
 /* EJERCICIO5 */
-INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (13, 'Selecciona la opción correcta', 'Si la nota Do se encuentra en el 2º espacio, ¿dónde estará si subimos una octava?', 'assets/images/nota do.jpg', 0);
-INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, '', 'assets/images/nota1.jpg', 0);
-INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, '', 'assets/images/nota2.jpg', 0);
-INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, '', 'assets/images/notaCorrecta.jpg', 1);
-INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, '', 'assets/images/nota3.jpg', 0); 
+INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (15, 'Selecciona la opción correcta', 'Si la nota Do se encuentra en el 2º espacio, ¿dónde estará si subimos una octava?', 'assets/images/nota do.jpg', 1);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (15, '', 'assets/images/nota1.jpg', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (15, '', 'assets/images/nota2.jpg', 0);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (15, '', 'assets/images/notaCorrecta.jpg', 1);
+INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (15, '', 'assets/images/nota3.jpg', 0); 
 
 /* APUNTES */
 
