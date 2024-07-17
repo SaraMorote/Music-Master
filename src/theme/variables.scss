@@ -67,3 +67,10 @@ ion-progress-bar {
     --buffer-background: #CCB3FD;
 }
 
+.centrarSpinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}

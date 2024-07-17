@@ -5,6 +5,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <div *ngIf="ejercicios.length === 0" class="centrarSpinner">
+    <img src="/assets/spinner.svg">
+  </div>
+  
   <ion-progress-bar *ngIf="ejercicios.length !== 0" [value]="numEjercicio/this.ejercicios.length" class="progress-bar" color="tertiary"></ion-progress-bar>
   <ion-header collapse="condense">
     <ion-toolbar>
