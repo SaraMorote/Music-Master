@@ -12,7 +12,7 @@ export class EjerciciosPage implements OnInit {
 
   @ViewChild('modalAcierto') modalAcierto?: IonModal;
   @ViewChild('modalError') modalError?: IonModal;
-  
+
   idLeccion: number = this.route.snapshot.params['idLeccion'];
   leccion?: Lecciones;
 
@@ -41,8 +41,10 @@ export class EjerciciosPage implements OnInit {
       if (ready) {
 
         this.leccion = await this.db.getLeccionById(this.idLeccion);
-        this.ejercicios = await this.db.getEjerciciosByLeccion(this.idLeccion);
-        console.log( this.ejercicios)
+        this.ejercicios = (await this.db.getEjerciciosByLeccion(this.idLeccion))
+          .map( value => ({ value, sort: Math.random() } ))
+          .sort((a, b) => a.sort - b.sort )
+          .map(({value}) => value);
 
         this.getEjercicioByNombre();
       }
@@ -104,9 +106,9 @@ export class EjerciciosPage implements OnInit {
   }
 
   async confirm() {
-    if((this.numEjercicio +1) >= this.ejercicios.length) {
-      
-      let progreso = (this.numAciertos/this.ejercicios.length)*100;
+    if((this.numEjercicio +1) >= 5) {
+
+      let progreso = (this.numAciertos/5)*100;
 
       if(progreso > this.leccion!.progreso){
         await this.db.updateProgresoLeccion(progreso, this.idLeccion);
@@ -122,25 +124,28 @@ export class EjerciciosPage implements OnInit {
     this.getEjercicioByNombre();
   }
 
-  guardarSeleccion(event: any){
-    this.opcionSeleccionada = event.target.value;
+  guardarSeleccion(id: number){
+    this.opcionSeleccionada = id;
   }
 
-  guardarPareja1(event: any){
-    this.pareja1 = event.target.value;
+  guardarPareja1(id: number){
+    this.pareja1 = id;
+    this.respuestasParejas.find( (respuesta: RespuestasParejas) => respuesta.idRespuesta === id)!.select1 = true;
   }
 
-  guardarPareja2(event: any){
+  guardarPareja2(id: number){
 
     if(this.numParejas === 4){
       return
     }
-    this.pareja2 = event.target.value;
+    this.pareja2 = id;
 
     //Comprobamos que la pareja1 es la correcta con la pareja2
 
     let resp1 = this.respuestasParejas.find( (respuesta: RespuestasParejas) => respuesta.idRespuesta === this.pareja1);
     let resp2 = this.respuestasParejas.find( (respuesta: RespuestasParejas) => respuesta.idRespuesta === this.pareja2);
+
+    resp2!.select2 = false;
 
     if(resp1?.esCorrecto1 === resp2?.esCorrecto2) {
       this.numParejas++;
@@ -152,7 +157,7 @@ export class EjerciciosPage implements OnInit {
 
     }
     else {
-      this.deselectRadios();
+      this.deselectRadios(resp1!, resp2!);
       this.presentToastError('bottom');
     }
   }
@@ -179,9 +184,9 @@ export class EjerciciosPage implements OnInit {
     await toast.present();
   }
 
-  deselectRadios() {
-    this.selectedValue = null;
-    this.selectedValue2 = null;
+  deselectRadios(resp1: RespuestasParejas, resp2: RespuestasParejas) {
+    resp1.select1 = false;
+    resp2.select2 = false;
   }
 
 }

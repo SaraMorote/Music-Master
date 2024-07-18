@@ -59,6 +59,8 @@ export interface RespuestasParejas {
   esCorrecto2: number,
   visible1: boolean,
   visible2: boolean
+  select1: boolean,
+  select2: boolean
 }
 
 export interface Apuntes {
@@ -188,7 +190,7 @@ export class DatabaseService {
     let query = 'SELECT * FROM lecciones  where curso = ?';
 
     return this.database.executeSql(query, [idCurso]).then((data: any) => {
-      
+
 
       let lecciones: Lecciones[] = [];
 
@@ -358,7 +360,9 @@ export class DatabaseService {
             esCorrecto2: data.rows.item(i).esCorrecto2,
             idEjercicio: data.rows.item(i).idEjercicio,
             visible1: true,
-            visible2: true
+            visible2: true,
+            select1: false,
+            select2: false,
           });
         }
       }
