@@ -159,13 +159,13 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (17, 2, 'assets/images/imagenesLecciones/grados escala.png', 'Nombre grados de la escala', 0);
 
 /* 3º ee.ee */
-INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (1, 3, 'assets/images/imagenesLecciones/circulo de quintas.png', 'Intervalos aumentados y disminuidos', 0);
+INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (1, 3, 'assets/images/imagenesLecciones/circulo de quintas.png', 'Intervalos aumentados', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (2, 3, 'assets/images/imagenesLecciones/circulo de quintas.png', 'Tonalidades relativas', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (3, 3, 'assets/images/imagenesLecciones/armadura.png', 'Escritura de la armadura', 0);
-INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (4, 3, 'assets/images/imagenesLecciones/armadura.png', 'Orden de los sostenidos y bemoles', 0);
+INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (4, 3, 'assets/images/imagenesLecciones/armadura.png', 'Orden sostenidos y bemoles', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (5, 3, 'assets/images/imagenesLecciones/orden sostenidos.png', 'Tonalidad a partir de la armadura', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (6, 3, 'assets/images/imagenesLecciones/armadura.png', 'Armadura de una tonalidad', 0);
-INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (7, 3, 'assets/images/imagenesLecciones/orden sostenidos.png', 'Armadura de todas las tonalidades', 0);
+INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (7, 3, 'assets/images/imagenesLecciones/orden sostenidos.png', 'Armadura de las tonalidades', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (8, 3, 'assets/images/imagenesLecciones/clave de do.png', 'Clave de Do (3ª línea)', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (9, 3, 'assets/images/imagenesLecciones/compas 3 por 8.png', 'Compás 3/8', 0);
 INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VALUES (10, 3, 'assets/images/imagenesLecciones/inversiones.png', 'Inversión', 0);
@@ -220,14 +220,14 @@ INSERT or IGNORE INTO lecciones (numLeccion, curso, imagen, nombre, progreso) VA
 /* TABLA DE EJERCICIOS - HABRÁ 10 EN TOTAL */
 INSERT or IGNORE INTO ejercicios VALUES (1, "Seleccion", 0);
 INSERT or IGNORE INTO ejercicios VALUES (2, "Seleccion", 0);
-/* INSERT or IGNORE INTO ejercicios VALUES (3, "Parejas", 0);
+INSERT or IGNORE INTO ejercicios VALUES (3, "Parejas", 0);
 INSERT or IGNORE INTO ejercicios VALUES (4, "Seleccion", 0);
 INSERT or IGNORE INTO ejercicios VALUES (5, "Parejas", 0);
 INSERT or IGNORE INTO ejercicios VALUES (6, "Seleccion", 0);
 INSERT or IGNORE INTO ejercicios VALUES (7, "Parejas", 0);
 INSERT or IGNORE INTO ejercicios VALUES (8, "Seleccion", 0);
 INSERT or IGNORE INTO ejercicios VALUES (9, "Parejas", 0);
-INSERT or IGNORE INTO ejercicios VALUES (10, "Seleccion", 0); */
+INSERT or IGNORE INTO ejercicios VALUES (10, "Seleccion", 0);
 
 /* EJERCICIO1 - LISTO */
 INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (1, 'Selecciona la opción correcta', '¿Cuál es esta nota?', 'assets/images/nota sol.jpg', 0);
@@ -276,7 +276,7 @@ INSERT or IGNORE INTO ejerciciosParejas (idEjercicio, tipoPregunta, enunciado) V
 INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (7, 'Plagal', 'IV y I', 2, 2);
 INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (7, 'Rota', 'V y I', 3, 1);
 INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (7, 'Auténtica', 'V y VI', 1, 3);
-INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (7, 'Semicadencia', 'IV y V', 4, 4);
+INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (7, 'Compuesta', 'I, IV, V, I', 4, 4);
 
 /* EJERCICIO8 - LISTO */
 INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (8, 'Selecciona la opción correcta', '¿Qué símbolo es?', 'assets/images/calderon.png', 0);
@@ -298,7 +298,6 @@ INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoM
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (10, '4ª Menor', '', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (10, '3ª Justa', '', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (10, '4ª Justa', '', 1);
-
 
 
 
