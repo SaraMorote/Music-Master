@@ -106,6 +106,16 @@ export class DatabaseService {
       });
     });
    }
+   
+   async tablesExist(): Promise<boolean> {
+    try {
+      const result = await this.database.executeSql("SELECT name FROM sqlite_master WHERE type='table' AND name='ejercicios';", []);
+      return result.rows.length > 0;
+    } catch (error) {
+      console.error('Error checking if tables exist', error);
+      return false;
+    }
+  }
 
    async checkDatabaseReady() {
     try {
@@ -118,17 +128,7 @@ export class DatabaseService {
     } catch (error) {
       console.error('Error checking database ready state', error);
     }
-  }
-
-  async tablesExist(): Promise<boolean> {
-    try {
-      const result = await this.database.executeSql("SELECT name FROM sqlite_master WHERE type='table' AND name='ejercicios';", []);
-      return result.rows.length > 0;
-    } catch (error) {
-      console.error('Error checking if tables exist', error);
-      return false;
-    }
-  }
+  }  
 
    async seedDatabase() {
     try {
