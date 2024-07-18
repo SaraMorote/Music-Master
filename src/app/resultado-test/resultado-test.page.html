@@ -1,12 +1,16 @@
 <ion-content [fullscreen]="true" *ngIf="leccion">
-  <h4 class="textoBienvenida">{{progreso}}%</h4>
-  
-  <!-- <div *ngIf="curso" class="centrarTexto">
-    <img  [src]="curso.imagen" class="bienvenida">
-  </div> -->
 
-    <h5>{{titulo}}</h5>
-    <p>{{texto}}</p>
+  <h3 style="color: #49209B; text-align: center; margin-top: 100px;">{{leccion.nombre}}</h3>
+  <div class="centrarPorcentaje" style="margin-top: -120px;">
+    <section class="porcentaje">
+      <h2 class="textoBienvenida" style="color: white;">{{progreso}}%</h2>
+    </section>
+  </div>
+  
+  
+  <h4 style="text-align: center; margin-top: 20px;">{{titulo}}</h4>
+  <p class="textoJustificado">{{texto}}</p>
+
   <div class="centrarBoton">
     <ion-button [routerLink]="['/tabs/inicio', leccion.curso]" class="elongated-button">Aceptar</ion-button>
   </div>
