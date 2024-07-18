@@ -18,26 +18,13 @@ export class CursosPage /* implements OnInit */ {
   constructor(private db: DatabaseService, private router: Router) {
   }
 
-  /* ngOnInit() {
-    console.log('aaaaaa');
-    this.db.getDatabaseState().subscribe(ready => {
-      if (ready) {
-        this.db.getCursos().then(cursos => {
-          this.cursos = cursos;
-          console.log(this.cursos);
-        });
-        
-      }
-    })
-  } */
-
+  /* En vez de ngOnInit() */
   ionViewWillEnter() {
     this.db.getDatabaseState().subscribe(ready => {
       if (ready) {
         this.db.getCursos().then(cursos => {
           this.cursos = cursos;
           this.cursoSeleccionado = this.cursos.find(curso => curso.seleccionado === 1);
-          console.log(this.cursos);
         });
         
       }

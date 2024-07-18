@@ -44,7 +44,6 @@ export class InicioPage {
         this.db.getLeccionByCurso(this.idCurso).then(lecciones => {
           this.lecciones = lecciones;
           this.calcularProgresoCurso();
-          console.log(lecciones);
         });
       }
     })

@@ -91,16 +91,13 @@ export class DatabaseService {
   /* lecciones = new BehaviorSubject<Lecciones[]>([]); */
 
   constructor(private plt: Platform, private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient) {
-    console.log(plt);
     this.plt.ready().then(() => {
-      console.log('He llegao');
       this.sqlite.create({
         name: 'musicMaster.db',
         location: 'default'
       })
       .then((db: SQLiteObject) => {
         this.database = db;
-        console.log('Database created!');
         this.seedDatabase();
       })
       .catch(e => {
@@ -116,10 +113,7 @@ export class DatabaseService {
 
       this.dbReady.next(true);
 
-      console.log("LISTO");
-
     } catch (error) {
-      console.log('Error inicializando la base de datos: ', error);
       throw error;
     }
    }
@@ -165,8 +159,6 @@ export class DatabaseService {
     let query = 'UPDATE cursos SET seleccionado = ? where idCurso = ?';
 
     return this.database.executeSql(query, [data, idCurso]).then((data: any) => {
-      console.log('estamos aqui');
-      console.log(data);
     });
   }
 
@@ -174,7 +166,6 @@ export class DatabaseService {
     let query = 'UPDATE lecciones SET progreso = ? where idLeccion = ?';
 
     return this.database.executeSql(query, [data, idLeccion]).then((data: any) => {
-      console.log(data);
     });
   }
 
@@ -182,7 +173,6 @@ export class DatabaseService {
     let query = 'UPDATE cursos SET progreso = ? where idCurso = ?';
 
     return this.database.executeSql(query, [data, idCurso]).then((data: any) => {
-      console.log(data);
     });
   }
 

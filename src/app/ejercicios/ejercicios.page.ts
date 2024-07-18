@@ -54,13 +54,9 @@ export class EjerciciosPage implements OnInit {
   async getEjercicioByNombre(){
     if( this.ejercicios[this.numEjercicio].nombre === 'Seleccion' ){
       this.ejercicioSeleccion = await this.db.getEjerciciosSeleccion(this.ejercicios[this.numEjercicio].idEjercicio);
-      console.log(this.ejercicios[this.numEjercicio].idEjercicio)
-      console.log(this.ejercicioSeleccion)
     }
     else{
       this.ejercicioParejas = await this.db.getEjerciciosParejas(this.ejercicios[this.numEjercicio].idEjercicio);
-      console.log(this.ejercicios[this.numEjercicio].idEjercicio)
-      console.log(this.ejercicioParejas);
     }
 
     this.getRespuestaByEjercicio(this.ejercicios[this.numEjercicio].idEjercicio);
@@ -70,11 +66,9 @@ export class EjerciciosPage implements OnInit {
 
     if(this.ejercicios[this.numEjercicio].nombre == "Seleccion"){
       this.respuestasSeleccion = await this.db.getRespuestasSeleccionByEjercicio(idEjercicio)
-      console.log(this.respuestasSeleccion)
     }
     else {
       this.respuestasParejas = await this.db.getRespuestasParejasByEjercicio(idEjercicio)
-      console.log(this.respuestasParejas)
     }
 
   }
