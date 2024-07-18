@@ -98,13 +98,37 @@ export class DatabaseService {
       })
       .then((db: SQLiteObject) => {
         this.database = db;
-        this.seedDatabase();
+        /* this.seedDatabase(); */
+        this.checkDatabaseReady();
       })
       .catch(e => {
         console.error('Error creating database', e);
       });
     });
    }
+
+   async checkDatabaseReady() {
+    try {
+      const tablesExist = await this.tablesExist();
+      if (!tablesExist) {
+        await this.seedDatabase();
+      } else {
+        this.dbReady.next(true);
+      }
+    } catch (error) {
+      console.error('Error checking database ready state', error);
+    }
+  }
+
+  async tablesExist(): Promise<boolean> {
+    try {
+      const result = await this.database.executeSql("SELECT name FROM sqlite_master WHERE type='table' AND name='ejercicios';", []);
+      return result.rows.length > 0;
+    } catch (error) {
+      console.error('Error checking if tables exist', error);
+      return false;
+    }
+  }
 
    async seedDatabase() {
     try {
