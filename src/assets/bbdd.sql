@@ -230,7 +230,7 @@ INSERT or IGNORE INTO ejercicios VALUES (9, "Parejas", 0);
 INSERT or IGNORE INTO ejercicios VALUES (10, "Seleccion", 0);
 
 /* EJERCICIO1 - LISTO */
-INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (1, 'Selecciona la opción correcta', '¿Cuál es esta nota?', 'assets/images/nota sol.jpg', 0);
+INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (1, 'Selecciona la opción correcta', '¿Cuál de todas las opciones es esta nota?', 'assets/images/nota sol.jpg', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (1, 'Sol', '', 1);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (1, 'Do', '', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (1, 'Mi', '', 0);
@@ -312,7 +312,7 @@ INSERT or IGNORE INTO ejercicios VALUES (16, "Seleccion", 31);
 INSERT or IGNORE INTO ejercicios VALUES (17, "Seleccion", 31);  
 
 /* EJERCICIO1 */
-INSERT or IGNORE INTO ejerciciosParejas (idEjercicio, tipoPregunta, enunciado) VALUES (11, 'Relaciona las columnas', 'Indica la posición que ocupan las siguientes notas en el pentagrama, estando en clave de Fa en 4ª línea.');
+INSERT or IGNORE INTO ejerciciosParejas (idEjercicio, tipoPregunta, enunciado) VALUES (11, 'Relaciona las columnas', 'Indica la posición de las siguientes notas en clave de Fa.');
 INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (11, 'Do', '4º espacio', 1, 3);
 INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (11, 'La', '2º espacio', 4, 1);
 INSERT or IGNORE INTO respuestasParejas (idEjercicio, valorRespuesta1, valorRespuesta2, esCorrecto1, esCorrecto2) VALUES (11, 'Sol', '3ª línea', 3, 2);
@@ -326,7 +326,7 @@ INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoM
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (12, 'No afecta a la nota', '', 0);
 
  /* EJERCICIO3 */
-INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (13, 'Selecciona la opción correcta', '¿Cuál es esta nota?', 'assets/images/nota do.jpg', 0);
+INSERT or IGNORE INTO ejerciciosSeleccion (idEjercicio, tipoPregunta, enunciado, recursoMultimedia, tipoRecurso) VALUES (13, 'Selecciona la opción correcta', '¿Cuál de todas las opciones es esta nota?', 'assets/images/nota do.jpg', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, 'Re', '', 0);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, 'Do', '', 1);
 INSERT or IGNORE INTO respuestasSeleccion (idEjercicio, valorRespuesta, recursoMultimedia, esCorrecto) VALUES (13, 'Sol', '', 0);

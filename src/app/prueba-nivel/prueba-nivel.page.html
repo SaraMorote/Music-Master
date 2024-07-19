@@ -38,7 +38,7 @@
 
           <ion-item style="margin-top: 5px;" [ngClass]="{'item-sel-selected': respuesta.idRespuesta === opcionSeleccionada, 'item-sel': respuesta.idRespuesta !== opcionSeleccionada}" [button]="true" (click)="guardarSeleccion(respuesta.idRespuesta)">
 
-            <ion-label *ngIf="ejercicioSeleccion.tipoRecurso === 0"> {{respuesta.valorRespuesta}} </ion-label>
+            <ion-label style="font-size: 12px;" *ngIf="ejercicioSeleccion.tipoRecurso === 0"> {{respuesta.valorRespuesta}} </ion-label>
 
             <ion-label *ngIf="ejercicioSeleccion.tipoRecurso === 1">
               <img [src]="respuesta.recursoMultimedia" alt="img" class="radio-image">
@@ -67,7 +67,7 @@
           <ion-list lines="none" class="list-flex" style="margin-top: 10px;">
             <ion-item style="margin-top: 5px;" *ngFor="let respuesta of respuestasParejas" [button]="true" (click)="guardarPareja1(respuesta.idRespuesta)" [ngClass]="{'hidden': !respuesta.visible1, 'item-selParejas-selected': respuesta.select1, 'item-selParejas': !respuesta.select1}">
 
-              <ion-label>{{ respuesta.valorRespuesta1 }}</ion-label>
+              <ion-label style="font-size: 12px;">{{ respuesta.valorRespuesta1 }}</ion-label>
 
             </ion-item>
           </ion-list>
@@ -75,7 +75,7 @@
           <ion-list lines="none" class="list-flex" style="margin-top: 10px;">
             <ion-item style="margin-top: 5px;" *ngFor="let respuesta of respuestasParejas" [button]="true" (click)="guardarPareja2(respuesta.idRespuesta)" [ngClass]="{'hidden': !respuesta.visible2, 'item-selParejas-selected': respuesta.select2, 'item-selParejas': !respuesta.select2}">
 
-              <ion-label>{{ respuesta.valorRespuesta2 }}</ion-label>
+              <ion-label style="font-size: 12px;">{{ respuesta.valorRespuesta2 }}</ion-label>
 
             </ion-item>
           </ion-list>
